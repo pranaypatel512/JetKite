@@ -69,10 +69,12 @@ kapt {
 }
 
 dependencies {
+    implementation(project(":core:designsystem"))
+    implementation(project(":feature:login"))
 
     implementation("androidx.tracing:tracing-ktx:1.1.0")
-    implementation("androidx.compose.material3:material3:1.0.0-rc01")
-    implementation("androidx.compose.material3:material3-window-size-class:1.0.0-rc01")
+    implementation(Lib.Material3.MATERIAL_3)
+    implementation(Lib.Material3.MATERIAL_WINDOW_SIZE)
 
     /* Android Designing and layout */
     implementation(Lib.Android.COMPOSE_LIVEDATA)
