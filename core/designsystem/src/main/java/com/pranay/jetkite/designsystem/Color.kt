@@ -1,4 +1,4 @@
-package com.pranay.jetkite.ui.theme
+package com.pranay.jetkite.designsystem
 import androidx.compose.ui.graphics.Color
 
 val md_theme_light_primary = Color(0xFF005AC1)

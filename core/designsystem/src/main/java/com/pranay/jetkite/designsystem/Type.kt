@@ -1,4 +1,4 @@
-package com.pranay.jetkite.ui.theme
+package com.pranay.jetkite.designsystem
 
 import androidx.compose.material3.Typography
 import androidx.compose.ui.text.TextStyle

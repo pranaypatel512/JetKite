@@ -1,4 +1,4 @@
-package com.pranay.jetkite.ui.theme
+package com.pranay.jetkite.designsystem // ktlint-disable filename
 
 import android.app.Activity
 import android.os.Build

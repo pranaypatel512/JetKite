@@ -9,7 +9,6 @@ buildscript {
         classpath(BuildPlugins.DAGGER_HILT_PLUGIN)
         classpath(BuildPlugins.KOTLIN_GRADLE_PLUGIN)
         classpath(BuildPlugins.KTLINT_GRADLE_PLUGIN)
-        classpath(kotlin("serialization", version = Lib.Kotlin.KOTLIN_VERSION))
     }
 }
 subprojects {

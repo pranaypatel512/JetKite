@@ -23,15 +23,15 @@ object BuildPlugins {
 
 object Lib {
     object Kotlin {
-        const val KOTLIN_VERSION = "1.7.0"
+        const val KOTLIN_VERSION = "1.7.10"
         private const val KTX_CORE_VERSION = "1.7.0"
         const val KT_STD = "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$KOTLIN_VERSION"
         const val KTX_CORE = "androidx.core:core-ktx:$KTX_CORE_VERSION"
     }
 
     object Android {
-        private const val COMPOSE_VERSION = "1.2.0"
-        const val COMPOSE_COMPILER_VERSION = COMPOSE_VERSION
+        private const val COMPOSE_VERSION = "1.3.0-beta03"
+        const val COMPOSE_COMPILER_VERSION = "1.3.1"
         private const val COMPOSE_ACTIVITY_VERSION = "1.5.1"
         private const val COMPOSE_CONSTRAINT_LAYOUT_VERSION = "1.0.0"
         private const val COMPOSE_NAVIGATION_VERSION = "2.5.0-alpha01"
@@ -124,6 +124,13 @@ object Lib {
     object Logger {
         private const val TIMBER_VERSION = "5.0.1"
         const val TIMBER = "com.jakewharton.timber:timber:$TIMBER_VERSION"
+    }
+
+    object Material3{
+        private const val MATERIAL_3_VERSION = "1.0.0-rc01"
+        const val MATERIAL_3 = "androidx.compose.material3:material3:$MATERIAL_3_VERSION"
+        const val MATERIAL_WINDOW_SIZE = "androidx.compose.material3:material3-window-size-class:$MATERIAL_3_VERSION"
+
     }
 }
 
