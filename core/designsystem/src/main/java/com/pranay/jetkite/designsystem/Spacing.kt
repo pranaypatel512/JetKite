@@ -15,7 +15,12 @@ class Spacing internal constructor(
     val medium: Dp = 16.dp,
     val large: Dp = 24.dp,
     val extraLarge: Dp = 32.dp,
-    val minWidth: Dp = 300.dp
+    val minWidth: Dp = 300.dp,
+    val smallImage: Dp = 32.dp,
+    val mediumImage: Dp = 52.dp,
+    val largeImage: Dp = 120.dp,
+    val dp100: Dp = 100.dp,
+    val dp1: Dp = 1.dp
 ) {
     override fun equals(other: Any?): Boolean {
         if (this === other) return true
