@@ -15,7 +15,7 @@ import com.pranay.jetkite.designsystem.spacing
 fun JetKiteDivider(
     modifier: Modifier = Modifier,
     thickness: Dp,
-    color: Color = MaterialTheme.colorScheme.surfaceVariant
+    color: Color = MaterialTheme.colorScheme.outline.copy(alpha = 0.2f)
 ) {
     Divider(thickness = thickness, color = color, modifier = modifier)
 }

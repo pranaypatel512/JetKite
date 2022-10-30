@@ -20,6 +20,8 @@ class Spacing internal constructor(
     val mediumImage: Dp = 52.dp,
     val largeImage: Dp = 120.dp,
     val dp100: Dp = 100.dp,
+    val dp80: Dp = 80.dp,
+    val dp20: Dp = 20.dp,
     val dp1: Dp = 1.dp
 ) {
     override fun equals(other: Any?): Boolean {

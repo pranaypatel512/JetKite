@@ -8,7 +8,7 @@ import com.pranay.jetkite.components.R
 
 object JetKiteIcons {
     val ArrowBack = Icons.Rounded.ArrowBack
-    val JetKiteLogo = R.drawable.jetkitelogo
+    val JetKiteLogo = R.drawable.kiteimagelogo
     val Login = R.drawable.ic_login
     val NewAccount = R.drawable.ic_person
 }

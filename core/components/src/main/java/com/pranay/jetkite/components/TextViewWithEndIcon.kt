@@ -3,6 +3,7 @@ package com.pranay.jetkite.components
 import android.content.res.Configuration
 import androidx.compose.foundation.layout.Box
 import androidx.compose.material.Icon
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -21,13 +22,13 @@ fun TextViewWithEndIcon(
     onOptionClick: () -> Unit = {}
 ) {
     Box(
-        modifier = modifier.clickableWithRipple {
+        modifier = Modifier.clickableWithRipple {
             onOptionClick()
         }
     ) {
         JetKiteTextView(
             text = text,
-            modifier = Modifier.align(
+            modifier = modifier.align(
                 Alignment.CenterStart
             )
         )
@@ -36,7 +37,8 @@ fun TextViewWithEndIcon(
             contentDescription = text,
             modifier = Modifier.align(
                 Alignment.CenterEnd
-            )
+            ),
+            tint = MaterialTheme.colorScheme.onPrimaryContainer
         )
     }
 }
