@@ -6,6 +6,7 @@ plugins {
 }
 
 android {
+    namespace = "com.pranay.jetkite.components"
     compileSdk = (ProjectProperties.COMPILE_SDK)
 
     defaultConfig {
@@ -47,16 +48,9 @@ android {
         jvmTarget = "1.8"
     }
 }
-// Required for annotation processing plugins like Dagger
-kapt {
-    generateStubs = true
-    correctErrorTypes = true
-}
 
 dependencies {
     implementation(project(":core:designsystem"))
-    implementation(project(":core:components"))
-
     /* Android Designing and layout */
     implementation(Lib.Android.MATERIAL_DESIGN)
     implementation(Lib.Android.ACCOMPANIST_SYSTEM_UI_CONTROLLER)
@@ -64,4 +58,5 @@ dependencies {
     implementation(Lib.Kotlin.KTX_CORE)
     implementation(Lib.Android.COMPOSE_TOOLING_PREVIEW)
     debugImplementation(Lib.Android.COMPOSE_TOOLING)
+
 }
