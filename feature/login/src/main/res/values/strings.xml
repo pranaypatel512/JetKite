@@ -4,4 +4,6 @@
     <string name="string_login">Login</string>
     <string name="string_loginid">Login ID</string>
     <string name="string_password">Password</string>
+    <string name="forgot_your_password_or_userid">Forgot your password or UserId?</string>
+    <string name="switch_account">Switch account</string>
 </resources>

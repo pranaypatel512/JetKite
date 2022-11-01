@@ -1,5 +1,6 @@
 package com.pranay.jetkite.login
 
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
@@ -34,6 +35,7 @@ import com.pranay.jetkite.components.JetKiteButton
 import com.pranay.jetkite.components.JetKiteLogo
 import com.pranay.jetkite.components.JetKiteTextField
 import com.pranay.jetkite.components.JetKiteTextView
+import com.pranay.jetkite.components.JetKiteTextViewPrimary
 import com.pranay.jetkite.components.R
 import com.pranay.jetkite.components.extension.LightDarkPreview
 import com.pranay.jetkite.components.extension.SystemBarsPaddingSpacer
@@ -44,7 +46,9 @@ import com.pranay.jetkite.designsystem.spacing
 @Composable
 fun LoginScreen(
     onNavigationBackClick: () -> Unit = {},
-    onLoginSuccess: () -> Unit = {}
+    onForgotClick: () -> Unit = {},
+    onSwitchAccountClick: () -> Unit = {},
+    onLoginSuccess: () -> Unit
 ) {
     var textUserName by remember { mutableStateOf(TextFieldValue("")) }
     var password by remember { mutableStateOf(TextFieldValue("")) }
@@ -54,12 +58,12 @@ fun LoginScreen(
 
     Surface {
         Column(
+            verticalArrangement = Arrangement.spacedBy(MaterialTheme.spacing.extraLarge, Alignment.Top),
             modifier = Modifier
                 .fillMaxSize()
                 .padding(horizontal = MaterialTheme.spacing.small)
         ) {
             SystemBarsPaddingSpacer()
-            Spacer(modifier = Modifier.padding(MaterialTheme.spacing.medium))
             Box(modifier = Modifier.fillMaxWidth().padding(end = MaterialTheme.spacing.medium)) {
                 JetKiteBackButton(
                     modifier = Modifier.size(
@@ -77,9 +81,9 @@ fun LoginScreen(
                         )
                 )
             }
-            Spacer(modifier = Modifier.padding(MaterialTheme.spacing.large))
+            Spacer(modifier = Modifier.padding(MaterialTheme.spacing.small))
             JetKiteTextView(modifier = Modifier.padding(horizontal = MaterialTheme.spacing.medium), text = stringResource(com.pranay.jetkite.login.R.string.string_login), style = MaterialTheme.typography.displaySmall)
-            Spacer(modifier = Modifier.padding(MaterialTheme.spacing.large))
+//            Spacer(modifier = Modifier.padding(MaterialTheme.spacing.large))
             JetKiteTextField(
                 textValue = textUserName,
                 singleLine = true,
@@ -108,7 +112,7 @@ fun LoginScreen(
             ) {
                 textUserName = it
             }
-            Spacer(modifier = Modifier.padding(MaterialTheme.spacing.large))
+//            Spacer(modifier = Modifier.padding(MaterialTheme.spacing.large))
             JetKiteTextField(
                 textValue = password,
                 singleLine = true,
@@ -144,8 +148,21 @@ fun LoginScreen(
             ) {
                 password = it
             }
-            Spacer(modifier = Modifier.padding(MaterialTheme.spacing.large))
             JetKiteButton(modifier = Modifier.fillMaxWidth().padding(horizontal = MaterialTheme.spacing.medium), text = stringResource(id = com.pranay.jetkite.login.R.string.string_login)) {
+            }
+            Box(modifier = Modifier.fillMaxWidth().padding(end = MaterialTheme.spacing.medium)) {
+                JetKiteTextViewPrimary(
+                    text = stringResource(com.pranay.jetkite.login.R.string.switch_account),
+                    modifier = Modifier
+                        .align(Alignment.CenterStart),
+                    onTextViewClick = onSwitchAccountClick
+                )
+                JetKiteTextViewPrimary(
+                    text = stringResource(com.pranay.jetkite.login.R.string.forgot_your_password_or_userid),
+                    modifier = Modifier
+                        .align(Alignment.CenterEnd),
+                    onTextViewClick = onForgotClick
+                )
             }
         }
     }
@@ -155,6 +172,6 @@ fun LoginScreen(
 @Composable
 fun LoginScreenPreview() {
     JetKiteTheme {
-        LoginScreen()
+        LoginScreen() {}
     }
 }
