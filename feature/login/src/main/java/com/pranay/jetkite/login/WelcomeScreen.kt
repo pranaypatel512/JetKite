@@ -43,13 +43,15 @@ fun WelcomeScreen(
             TextViewWithEndIcon(
                 modifier = Modifier.fillMaxWidth().padding(vertical = MaterialTheme.spacing.dp20),
                 text = stringResource(id = R.string.login_to_kite),
-                iconRes = JetKiteIcons.Login
+                iconRes = JetKiteIcons.Login,
+                onOptionClick = onActionLoginClick
             )
             JetKiteDivider(thickness = MaterialTheme.spacing.dp1)
             TextViewWithEndIcon(
                 modifier = Modifier.fillMaxWidth().padding(vertical = MaterialTheme.spacing.dp20),
                 text = stringResource(id = R.string.open_new_account),
-                iconRes = JetKiteIcons.NewAccount
+                iconRes = JetKiteIcons.NewAccount,
+                onOptionClick = onActionSignUpClick
             )
             JetKiteDivider(thickness = MaterialTheme.spacing.dp1)
         }

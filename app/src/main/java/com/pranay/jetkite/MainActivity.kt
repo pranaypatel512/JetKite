@@ -7,7 +7,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.tooling.preview.Preview
 import com.pranay.jetkite.designsystem.JetKiteTheme
-import com.pranay.jetkite.login.WelcomeScreen
+import com.pranay.jetkite.login.LoginScreen
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -15,7 +15,7 @@ class MainActivity : ComponentActivity() {
         setContent {
             JetKiteTheme {
                 // A surface container using the 'background' color from the theme
-                WelcomeScreen()
+                LoginScreen()
             }
         }
     }
