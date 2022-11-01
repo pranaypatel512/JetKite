@@ -1,4 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="welcome_to_jetkite">Welcome to JetKite</string>
+    <string name="string_login">Login</string>
+    <string name="string_loginid">Login ID</string>
+    <string name="string_password">Password</string>
 </resources>
