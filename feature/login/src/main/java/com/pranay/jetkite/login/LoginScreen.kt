@@ -1,5 +1,6 @@
 package com.pranay.jetkite.login
 
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -8,6 +9,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.Icon
@@ -29,6 +31,8 @@ import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.text.input.VisualTransformation
+import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.tooling.preview.Preview
 import com.pranay.jetkite.components.JetKiteBackButton
 import com.pranay.jetkite.components.JetKiteButton
 import com.pranay.jetkite.components.JetKiteLogo
@@ -36,14 +40,17 @@ import com.pranay.jetkite.components.JetKiteTextField
 import com.pranay.jetkite.components.JetKiteTextView
 import com.pranay.jetkite.components.JetKiteTextViewPrimary
 import com.pranay.jetkite.components.R
+import com.pranay.jetkite.components.TouchIdButton
 import com.pranay.jetkite.components.extension.LightDarkPreview
 import com.pranay.jetkite.components.extension.clickableWithRipple
 import com.pranay.jetkite.components.icons.JetKiteIcons
 import com.pranay.jetkite.designsystem.JetKiteTheme
 import com.pranay.jetkite.designsystem.spacing
+import com.pranay.jetkite.login.utils.LoginState
 
 @Composable
 fun LoginScreen(
+    loginState: LoginState = LoginState.LoginStateNew,
     onNavigationBackClick: () -> Unit = {},
     onForgotClick: () -> Unit = {},
     onSwitchAccountClick: () -> Unit = {},
@@ -79,87 +86,142 @@ fun LoginScreen(
                         )
                 )
             }
-            Spacer(modifier = Modifier.padding(MaterialTheme.spacing.small))
-            JetKiteTextView(modifier = Modifier.padding(horizontal = MaterialTheme.spacing.medium), text = stringResource(com.pranay.jetkite.login.R.string.string_login), style = MaterialTheme.typography.displaySmall)
-            JetKiteTextField(
-                textValue = textUserName,
-                singleLine = true,
-                label = {
-                    JetKiteTextView(text = stringResource(com.pranay.jetkite.login.R.string.string_loginid))
-                },
-                trailingIcon = {
-                    Icon(
-                        painter = painterResource(id = R.drawable.ic_person),
-                        contentDescription = stringResource(com.pranay.jetkite.login.R.string.string_loginid),
-                        tint = MaterialTheme.colorScheme.outline
-                    )
-                },
-                keyboardActions = KeyboardActions(
-                    onNext = {
-                        focusManager.moveFocus(FocusDirection.Next)
-                    }
-                ),
-                keyboardOptions = KeyboardOptions.Default.copy(
-                    autoCorrect = true,
-                    keyboardType = KeyboardType.Text,
-                    imeAction = ImeAction.Next
-                )
-            ) {
-                textUserName = it
+            if (loginState != LoginState.LoginStateNew) {
+                Spacer(modifier = Modifier.padding(MaterialTheme.spacing.small))
+                UserInfoView("Pranaykumar Atulbhai Patel", "PA", "AA0000")
+            } else {
+                Spacer(modifier = Modifier.padding(MaterialTheme.spacing.small))
             }
-            JetKiteTextField(
-                textValue = password,
-                singleLine = true,
-                isError = matchError.value,
-                label = {
-                    JetKiteTextView(text = stringResource(com.pranay.jetkite.login.R.string.string_password))
-                },
-                trailingIcon = {
-                    val icon = if (showPassword.value) {
-                        JetKiteIcons.Visibility
-                    } else {
-                        JetKiteIcons.VisibilityOff
-                    }
-                    Icon(
-                        painter = painterResource(id = icon),
-                        contentDescription = "Visibility",
-                        tint = MaterialTheme.colorScheme.outline,
-                        modifier = Modifier.clickableWithRipple {
-                            showPassword.value = !showPassword.value
+            if (loginState == LoginState.LoginStateExistingUser) {
+                Spacer(modifier = Modifier.padding(MaterialTheme.spacing.small))
+                TouchIdButton(modifier = Modifier.padding(horizontal = MaterialTheme.spacing.medium), text = "Login with biometric") {
+                }
+            }
+            if (loginState == LoginState.LoginStateNew) {
+                JetKiteTextView(
+                    modifier = Modifier.padding(horizontal = MaterialTheme.spacing.medium),
+                    text = stringResource(com.pranay.jetkite.login.R.string.string_login),
+                    style = MaterialTheme.typography.displaySmall
+                )
+                JetKiteTextField(
+                    textValue = textUserName,
+                    singleLine = true,
+                    label = {
+                        JetKiteTextView(text = stringResource(com.pranay.jetkite.login.R.string.string_loginid))
+                    },
+                    trailingIcon = {
+                        Icon(
+                            painter = painterResource(id = R.drawable.ic_person),
+                            contentDescription = stringResource(com.pranay.jetkite.login.R.string.string_loginid),
+                            tint = MaterialTheme.colorScheme.outline
+                        )
+                    },
+                    keyboardActions = KeyboardActions(
+                        onNext = {
+                            focusManager.moveFocus(FocusDirection.Next)
                         }
+                    ),
+                    keyboardOptions = KeyboardOptions.Default.copy(
+                        autoCorrect = true,
+                        keyboardType = KeyboardType.Text,
+                        imeAction = ImeAction.Next
                     )
-                },
-                visualTransformation = if (showPassword.value) VisualTransformation.None else PasswordVisualTransformation(),
-                keyboardActions = KeyboardActions(
-                    onDone = {
-                        focusManager.clearFocus()
+                ) {
+                    textUserName = it
+                }
+            }
+            if (loginState != LoginState.LoginStateExistingUser) {
+                JetKiteTextField(
+                    textValue = password,
+                    singleLine = true,
+                    isError = matchError.value,
+                    label = {
+                        JetKiteTextView(text = stringResource(com.pranay.jetkite.login.R.string.string_password))
+                    },
+                    trailingIcon = {
+                        val icon = if (showPassword.value) {
+                            JetKiteIcons.Visibility
+                        } else {
+                            JetKiteIcons.VisibilityOff
+                        }
+                        Icon(
+                            painter = painterResource(id = icon),
+                            contentDescription = "Visibility",
+                            tint = MaterialTheme.colorScheme.outline,
+                            modifier = Modifier.clickableWithRipple {
+                                showPassword.value = !showPassword.value
+                            }
+                        )
+                    },
+                    visualTransformation = if (showPassword.value) VisualTransformation.None else PasswordVisualTransformation(),
+                    keyboardActions = KeyboardActions(
+                        onDone = {
+                            focusManager.clearFocus()
+                        }
+                    ),
+                    keyboardOptions = KeyboardOptions.Default.copy(
+                        autoCorrect = true,
+                        keyboardType = KeyboardType.Text,
+                        imeAction = ImeAction.Done
+                    )
+                ) {
+                    password = it
+                }
+            }
+            if (loginState != LoginState.LoginStateExistingUser) {
+                JetKiteButton(
+                    modifier = Modifier.fillMaxWidth()
+                        .padding(horizontal = MaterialTheme.spacing.medium),
+                    text = stringResource(id = com.pranay.jetkite.login.R.string.string_login)
+                ) {
+                }
+                Box(modifier = Modifier.fillMaxWidth().padding(horizontal = MaterialTheme.spacing.medium)) {
+                    if (loginState == LoginState.LoginStateAskPassword) {
+                        JetKiteTextViewPrimary(
+                            text = stringResource(com.pranay.jetkite.login.R.string.switch_account),
+                            modifier = Modifier
+                                .align(Alignment.CenterStart),
+                            onTextViewClick = onSwitchAccountClick
+                        )
                     }
-                ),
-                keyboardOptions = KeyboardOptions.Default.copy(
-                    autoCorrect = true,
-                    keyboardType = KeyboardType.Text,
-                    imeAction = ImeAction.Done
-                )
-            ) {
-                password = it
-            }
-            JetKiteButton(modifier = Modifier.fillMaxWidth().padding(horizontal = MaterialTheme.spacing.medium), text = stringResource(id = com.pranay.jetkite.login.R.string.string_login)) {
-            }
-            Box(modifier = Modifier.fillMaxWidth().padding(horizontal = MaterialTheme.spacing.medium)) {
-                JetKiteTextViewPrimary(
-                    text = stringResource(com.pranay.jetkite.login.R.string.switch_account),
-                    modifier = Modifier
-                        .align(Alignment.CenterStart),
-                    onTextViewClick = onSwitchAccountClick
-                )
-                JetKiteTextViewPrimary(
-                    text = stringResource(com.pranay.jetkite.login.R.string.forgot_your_password_or_userid),
-                    modifier = Modifier
-                        .align(Alignment.CenterEnd),
-                    onTextViewClick = onForgotClick
-                )
+                    JetKiteTextViewPrimary(
+                        text = stringResource(com.pranay.jetkite.login.R.string.forgot_your_password_or_userid),
+                        modifier = Modifier
+                            .align(Alignment.CenterEnd),
+                        onTextViewClick = onForgotClick
+                    )
+                }
             }
         }
+    }
+}
+
+@Composable
+fun UserInfoView(name: String, initials: String, userID: String) {
+    Column(horizontalAlignment = Alignment.CenterHorizontally, modifier = Modifier.fillMaxWidth()) {
+        Box(
+            contentAlignment = Alignment.Center,
+            modifier = Modifier.size(MaterialTheme.spacing.dp100)
+                .background(MaterialTheme.colorScheme.primary.copy(alpha = 0.2f), CircleShape)
+        ) {
+            JetKiteTextView(
+                text = initials,
+                style = MaterialTheme.typography.titleLarge.copy(
+                    color = MaterialTheme.colorScheme.primary.copy(alpha = 0.4f),
+                    textAlign = TextAlign.Center
+                ),
+                maxLines = 1
+            )
+        }
+        JetKiteTextView(
+            text = name,
+            modifier = Modifier.padding(vertical = MaterialTheme.spacing.small),
+            style = MaterialTheme.typography.titleLarge
+        )
+        JetKiteTextView(
+            text = userID,
+            style = MaterialTheme.typography.titleSmall.copy(MaterialTheme.colorScheme.outline.copy(alpha = 0.5f))
+        )
     }
 }
 
@@ -168,5 +230,28 @@ fun LoginScreen(
 fun LoginScreenPreview() {
     JetKiteTheme {
         LoginScreen() {}
+    }
+}
+
+@Preview
+@Composable
+fun LoginScreenPreviewPassword() {
+    JetKiteTheme {
+        LoginScreen(loginState = LoginState.LoginStateAskPassword) {}
+    }
+}
+
+@Preview
+@Composable
+fun LoginScreenPreviewFinger() {
+    JetKiteTheme {
+        LoginScreen(loginState = LoginState.LoginStateExistingUser) {}
+    }
+}
+@LightDarkPreview
+@Composable
+fun UserInfoViewPreview() {
+    JetKiteTheme {
+        UserInfoView("Pranay", "PA", "AA0000")
     }
 }
