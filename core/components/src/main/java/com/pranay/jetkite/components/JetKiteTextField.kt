@@ -77,7 +77,9 @@ fun JetKiteTextField(
             focusedIndicatorColor = MaterialTheme.colorScheme.onPrimaryContainer,
             unfocusedLabelColor = MaterialTheme.colorScheme.outline,
             focusedLabelColor = MaterialTheme.colorScheme.onPrimaryContainer,
-            containerColor = Color.Transparent
+            containerColor = Color.Transparent,
+            unfocusedTrailingIconColor = MaterialTheme.colorScheme.outline,
+            focusedTrailingIconColor = MaterialTheme.colorScheme.onPrimaryContainer
         )
     )
 }

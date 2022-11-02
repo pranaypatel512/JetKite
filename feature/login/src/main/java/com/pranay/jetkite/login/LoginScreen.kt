@@ -11,7 +11,6 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.Icon
-import androidx.compose.material.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
@@ -38,7 +37,7 @@ import com.pranay.jetkite.components.JetKiteTextView
 import com.pranay.jetkite.components.JetKiteTextViewPrimary
 import com.pranay.jetkite.components.R
 import com.pranay.jetkite.components.extension.LightDarkPreview
-import com.pranay.jetkite.components.extension.SystemBarsPaddingSpacer
+import com.pranay.jetkite.components.extension.clickableWithRipple
 import com.pranay.jetkite.components.icons.JetKiteIcons
 import com.pranay.jetkite.designsystem.JetKiteTheme
 import com.pranay.jetkite.designsystem.spacing
@@ -63,12 +62,11 @@ fun LoginScreen(
                 .fillMaxSize()
                 .padding(horizontal = MaterialTheme.spacing.small)
         ) {
-            SystemBarsPaddingSpacer()
             Box(modifier = Modifier.fillMaxWidth().padding(end = MaterialTheme.spacing.medium)) {
                 JetKiteBackButton(
                     modifier = Modifier.size(
-                        height = MaterialTheme.spacing.mediumImage,
-                        width = MaterialTheme.spacing.mediumImage
+                        height = MaterialTheme.spacing.dp50,
+                        width = MaterialTheme.spacing.dp50
                     ).align(Alignment.CenterStart),
                     onClick = onNavigationBackClick
                 )
@@ -76,14 +74,13 @@ fun LoginScreen(
                     modifier = Modifier
                         .align(Alignment.CenterEnd)
                         .size(
-                            height = MaterialTheme.spacing.mediumImage,
-                            width = MaterialTheme.spacing.mediumImage
+                            height = MaterialTheme.spacing.smallImage,
+                            width = MaterialTheme.spacing.dp50
                         )
                 )
             }
             Spacer(modifier = Modifier.padding(MaterialTheme.spacing.small))
             JetKiteTextView(modifier = Modifier.padding(horizontal = MaterialTheme.spacing.medium), text = stringResource(com.pranay.jetkite.login.R.string.string_login), style = MaterialTheme.typography.displaySmall)
-//            Spacer(modifier = Modifier.padding(MaterialTheme.spacing.large))
             JetKiteTextField(
                 textValue = textUserName,
                 singleLine = true,
@@ -91,13 +88,11 @@ fun LoginScreen(
                     JetKiteTextView(text = stringResource(com.pranay.jetkite.login.R.string.string_loginid))
                 },
                 trailingIcon = {
-                    IconButton(onClick = { showPassword.value = !showPassword.value }) {
-                        Icon(
-                            painter = painterResource(id = R.drawable.ic_person),
-                            contentDescription = stringResource(com.pranay.jetkite.login.R.string.string_loginid),
-                            tint = MaterialTheme.colorScheme.outline
-                        )
-                    }
+                    Icon(
+                        painter = painterResource(id = R.drawable.ic_person),
+                        contentDescription = stringResource(com.pranay.jetkite.login.R.string.string_loginid),
+                        tint = MaterialTheme.colorScheme.outline
+                    )
                 },
                 keyboardActions = KeyboardActions(
                     onNext = {
@@ -112,7 +107,6 @@ fun LoginScreen(
             ) {
                 textUserName = it
             }
-//            Spacer(modifier = Modifier.padding(MaterialTheme.spacing.large))
             JetKiteTextField(
                 textValue = password,
                 singleLine = true,
@@ -126,13 +120,14 @@ fun LoginScreen(
                     } else {
                         JetKiteIcons.VisibilityOff
                     }
-                    IconButton(onClick = { showPassword.value = !showPassword.value }) {
-                        Icon(
-                            painter = painterResource(id = icon),
-                            contentDescription = "Visibility",
-                            tint = MaterialTheme.colorScheme.outline
-                        )
-                    }
+                    Icon(
+                        painter = painterResource(id = icon),
+                        contentDescription = "Visibility",
+                        tint = MaterialTheme.colorScheme.outline,
+                        modifier = Modifier.clickableWithRipple {
+                            showPassword.value = !showPassword.value
+                        }
+                    )
                 },
                 visualTransformation = if (showPassword.value) VisualTransformation.None else PasswordVisualTransformation(),
                 keyboardActions = KeyboardActions(
@@ -150,7 +145,7 @@ fun LoginScreen(
             }
             JetKiteButton(modifier = Modifier.fillMaxWidth().padding(horizontal = MaterialTheme.spacing.medium), text = stringResource(id = com.pranay.jetkite.login.R.string.string_login)) {
             }
-            Box(modifier = Modifier.fillMaxWidth().padding(end = MaterialTheme.spacing.medium)) {
+            Box(modifier = Modifier.fillMaxWidth().padding(horizontal = MaterialTheme.spacing.medium)) {
                 JetKiteTextViewPrimary(
                     text = stringResource(com.pranay.jetkite.login.R.string.switch_account),
                     modifier = Modifier
