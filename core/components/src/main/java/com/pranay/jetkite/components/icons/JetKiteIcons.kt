@@ -11,6 +11,8 @@ object JetKiteIcons {
     val NewAccount = R.drawable.ic_person
     val Visibility = R.drawable.outline_visibility_24
     val VisibilityOff = R.drawable.outline_visibility_off_24
+    val OtpSubmit = R.drawable.baseline_arrow_circle_up_24
+    val UserPlaceholder = R.drawable.ic_user
 }
 
 /**

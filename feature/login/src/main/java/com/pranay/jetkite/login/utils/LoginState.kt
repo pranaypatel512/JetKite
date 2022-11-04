@@ -7,4 +7,5 @@ sealed class LoginState {
     object LoginStateNew : LoginState()
     object LoginStateAskPassword : LoginState()
     object LoginStateExistingUser : LoginState()
+    object LoginStateOTPCase : LoginState()
 }

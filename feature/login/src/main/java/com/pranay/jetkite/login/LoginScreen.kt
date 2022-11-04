@@ -1,5 +1,6 @@
 package com.pranay.jetkite.login
 
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -16,12 +17,14 @@ import androidx.compose.material.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.rotate
 import androidx.compose.ui.focus.FocusDirection
 import androidx.compose.ui.platform.LocalFocusManager
 import androidx.compose.ui.res.painterResource
@@ -47,6 +50,7 @@ import com.pranay.jetkite.components.icons.JetKiteIcons
 import com.pranay.jetkite.designsystem.JetKiteTheme
 import com.pranay.jetkite.designsystem.spacing
 import com.pranay.jetkite.login.utils.LoginState
+import kotlinx.coroutines.delay
 
 @Composable
 fun LoginScreen(
@@ -58,9 +62,11 @@ fun LoginScreen(
 ) {
     var textUserName by remember { mutableStateOf(TextFieldValue("")) }
     var password by remember { mutableStateOf(TextFieldValue("")) }
+    var otpValue by remember { mutableStateOf(TextFieldValue("")) }
     val focusManager = LocalFocusManager.current
     val showPassword = remember { mutableStateOf(false) }
     val matchError = remember { mutableStateOf(false) }
+    var seconds by remember { mutableStateOf(60) }
 
     Surface {
         Column(
@@ -85,6 +91,78 @@ fun LoginScreen(
                             width = MaterialTheme.spacing.dp50
                         )
                 )
+            }
+            if (loginState == LoginState.LoginStateOTPCase) {
+                LaunchedEffect(seconds) {
+                    if (seconds >= 1) {
+                        delay(1000)
+                        seconds -= 1
+                    }
+                }
+                Column(
+                    verticalArrangement = Arrangement.spacedBy(MaterialTheme.spacing.small, Alignment.Top),
+                    horizontalAlignment = Alignment.CenterHorizontally,
+                    modifier = Modifier.fillMaxWidth()
+                ) {
+                    Image(
+                        painter = painterResource(id = JetKiteIcons.UserPlaceholder),
+                        contentDescription = stringResource(com.pranay.jetkite.login.R.string.person_icon)
+                    )
+                    Spacer(modifier = Modifier.padding(MaterialTheme.spacing.extraSmall))
+                    JetKiteTextView(
+                        modifier = Modifier.fillMaxWidth().padding(horizontal = MaterialTheme.spacing.medium),
+                        text = stringResource(id = com.pranay.jetkite.login.R.string.enter_otp_info),
+                        style = MaterialTheme.typography.bodyMedium.copy(
+                            MaterialTheme.colorScheme.outline.copy(
+                                alpha = 0.5f
+                            )
+                        )
+                    )
+                    JetKiteTextField(
+                        textValue = otpValue,
+                        singleLine = true,
+                        isError = matchError.value,
+                        label = {
+                            JetKiteTextView(text = stringResource(com.pranay.jetkite.login.R.string.enter_sms_email_otp))
+                        },
+                        trailingIcon = {
+                            Icon(
+                                painter = painterResource(id = JetKiteIcons.OtpSubmit),
+                                contentDescription = stringResource(com.pranay.jetkite.login.R.string.enter_sms_email_otp),
+                                tint = MaterialTheme.colorScheme.primary,
+                                modifier = Modifier.clickableWithRipple {
+                                    // Do with OTP send icon
+                                }.rotate(90f)
+                            )
+                        },
+                        visualTransformation = PasswordVisualTransformation(),
+                        keyboardActions = KeyboardActions(
+                            onDone = {
+                                // Do with OTP send icon
+                            }
+                        ),
+                        keyboardOptions = KeyboardOptions.Default.copy(
+                            autoCorrect = true,
+                            keyboardType = KeyboardType.Number,
+                            imeAction = ImeAction.Done
+                        )
+                    ) {
+                        otpValue = it
+                    }
+                    Spacer(modifier = Modifier.padding(MaterialTheme.spacing.extraSmall))
+                    JetKiteTextView(
+                        modifier = if (seconds > 0) Modifier.padding(horizontal = MaterialTheme.spacing.medium) else Modifier.padding(
+                            horizontal = MaterialTheme.spacing.medium
+                        ).clickableWithRipple { },
+                        text = if (seconds > 0) "Resend OTP in $seconds seconds" else "Reset OTP",
+                        style = MaterialTheme.typography.titleSmall.copy(
+                            if (seconds > 0) MaterialTheme.colorScheme.outline.copy(
+                                alpha = 0.5f
+                            ) else MaterialTheme.colorScheme.outline.copy(alpha = 0.9f)
+                        )
+                    )
+                }
+                return@Column
             }
             if (loginState != LoginState.LoginStateNew) {
                 Spacer(modifier = Modifier.padding(MaterialTheme.spacing.small))
@@ -248,6 +326,15 @@ fun LoginScreenPreviewFinger() {
         LoginScreen(loginState = LoginState.LoginStateExistingUser) {}
     }
 }
+
+@Preview
+@Composable
+fun LoginScreenPreviewOTP() {
+    JetKiteTheme {
+        LoginScreen(loginState = LoginState.LoginStateOTPCase) {}
+    }
+}
+
 @LightDarkPreview
 @Composable
 fun UserInfoViewPreview() {
