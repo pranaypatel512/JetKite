@@ -20,7 +20,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
+import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -60,13 +60,13 @@ fun LoginScreen(
     onSwitchAccountClick: () -> Unit = {},
     onLoginSuccess: () -> Unit
 ) {
-    var textUserName by remember { mutableStateOf(TextFieldValue("")) }
-    var password by remember { mutableStateOf(TextFieldValue("")) }
-    var otpValue by remember { mutableStateOf(TextFieldValue("")) }
+    var textUserName by rememberSaveable { mutableStateOf(TextFieldValue("")) }
+    var password by rememberSaveable { mutableStateOf(TextFieldValue("")) }
+    var otpValue by rememberSaveable { mutableStateOf(TextFieldValue("")) }
     val focusManager = LocalFocusManager.current
-    val showPassword = remember { mutableStateOf(false) }
-    val matchError = remember { mutableStateOf(false) }
-    var seconds by remember { mutableStateOf(60) }
+    val showPassword = rememberSaveable { mutableStateOf(false) }
+    val matchError = rememberSaveable { mutableStateOf(false) }
+    var seconds by rememberSaveable { mutableStateOf(60) }
 
     Surface {
         Column(
