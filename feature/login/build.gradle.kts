@@ -56,6 +56,7 @@ kapt {
 dependencies {
     implementation(project(":core:designsystem"))
     implementation(project(":core:components"))
+    implementation(project(":core:navigation"))
 
     /* Android Designing and layout */
     implementation(Lib.Android.MATERIAL_DESIGN)
@@ -64,4 +65,10 @@ dependencies {
     implementation(Lib.Kotlin.KTX_CORE)
     implementation(Lib.Android.COMPOSE_TOOLING_PREVIEW)
     debugImplementation(Lib.Android.COMPOSE_TOOLING)
+    implementation(Lib.Android.COMPOSE_LIVEDATA)
+    implementation(Lib.Android.COMPOSE_NAVIGATION)
+    implementation(Lib.Android.COMPOSE_COMMON_KTX)
+
+    implementation(Lib.Di.hiltAndroid)
+    implementation(Lib.Di.hiltNavigationCompose)
 }
