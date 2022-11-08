@@ -4,20 +4,19 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.material3.Text
+import androidx.compose.material3.windowsizeclass.ExperimentalMaterial3WindowSizeClassApi
+import androidx.compose.material3.windowsizeclass.calculateWindowSizeClass
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.tooling.preview.Preview
 import com.pranay.jetkite.designsystem.JetKiteTheme
-import com.pranay.jetkite.login.LoginScreen
-import com.pranay.jetkite.login.utils.LoginState
+import com.pranay.jetkite.ui.JetKiteApp
 
 class MainActivity : ComponentActivity() {
+    @OptIn(ExperimentalMaterial3WindowSizeClassApi::class)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-            JetKiteTheme {
-                // A surface container using the 'background' color from the theme
-                LoginScreen(loginState = LoginState.LoginStateOTPCase) {}
-            }
+            JetKiteApp(calculateWindowSizeClass(this))
         }
     }
 }

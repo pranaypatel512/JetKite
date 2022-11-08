@@ -33,7 +33,7 @@ fun WelcomeScreen(
             SystemBarsPaddingSpacer()
             JetKiteLogo(
                 modifier = Modifier
-                    .size(height = MaterialTheme.spacing.dp100, width = MaterialTheme.spacing.dp80)
+                    .size(height = MaterialTheme.spacing.dp80, width = MaterialTheme.spacing.dp60)
                     .padding(vertical = MaterialTheme.spacing.medium)
             )
             Spacer(modifier = Modifier.padding(MaterialTheme.spacing.large))
@@ -41,14 +41,14 @@ fun WelcomeScreen(
             Spacer(modifier = Modifier.padding(MaterialTheme.spacing.large))
             JetKiteDivider(thickness = MaterialTheme.spacing.dp1)
             TextViewWithEndIcon(
-                modifier = Modifier.fillMaxWidth().padding(vertical = MaterialTheme.spacing.dp20),
+                modifier = Modifier.fillMaxWidth().padding(vertical = MaterialTheme.spacing.large, horizontal = MaterialTheme.spacing.extraSmall),
                 text = stringResource(id = R.string.login_to_kite),
                 iconRes = JetKiteIcons.Login,
                 onOptionClick = onActionLoginClick
             )
             JetKiteDivider(thickness = MaterialTheme.spacing.dp1)
             TextViewWithEndIcon(
-                modifier = Modifier.fillMaxWidth().padding(vertical = MaterialTheme.spacing.dp20),
+                modifier = Modifier.fillMaxWidth().padding(vertical = MaterialTheme.spacing.large, horizontal = MaterialTheme.spacing.extraSmall),
                 text = stringResource(id = R.string.open_new_account),
                 iconRes = JetKiteIcons.NewAccount,
                 onOptionClick = onActionSignUpClick
