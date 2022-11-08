@@ -8,10 +8,10 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.sp
 
 val JetKiteFonts = FontFamily(
-    Font(R.font.roboto_light, FontWeight.Light),
-    Font(R.font.roboto_regular, FontWeight.Normal),
-    Font(R.font.roboto_medium, FontWeight.Medium),
-    Font(R.font.roboto_bold, FontWeight.Bold)
+    Font(R.font.uber_move_light, FontWeight.Light),
+    Font(R.font.uber_move_regular, FontWeight.Normal),
+    Font(R.font.uber_move_medium, FontWeight.Medium),
+    Font(R.font.uber_move_bold, FontWeight.Bold)
 )
 
 // Set of Material typography styles to start with

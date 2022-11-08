@@ -1,4 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="welcome_to_jetkite">Welcome to JetKite</string>
+    <string name="string_login">Login</string>
+    <string name="string_loginid">Login ID</string>
+    <string name="string_password">Password</string>
+    <string name="forgot_your_password_or_userid">Forgot your password or UserId?</string>
+    <string name="switch_account">Switch account</string>
+    <string name="enter_sms_email_otp">Enter SMS/email OTP</string>
+    <string name="enter_otp_info">Enter the OTP sent to your mobile &amp; email</string>
+    <string name="person_icon">Person Icon</string>
 </resources>

@@ -1,16 +1,18 @@
 package com.pranay.jetkite.components.icons
 
 import androidx.annotation.DrawableRes
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.rounded.ArrowBack
 import androidx.compose.ui.graphics.vector.ImageVector
 import com.pranay.jetkite.components.R
 
 object JetKiteIcons {
-    val ArrowBack = Icons.Rounded.ArrowBack
-    val JetKiteLogo = R.drawable.kiteimagelogo
+    val ArrowBack = R.drawable.ic_arrow_back
+    val JetKiteLogo = R.drawable.jetkitelogo
     val Login = R.drawable.ic_login
     val NewAccount = R.drawable.ic_person
+    val Visibility = R.drawable.outline_visibility_24
+    val VisibilityOff = R.drawable.outline_visibility_off_24
+    val OtpSubmit = R.drawable.baseline_arrow_circle_up_24
+    val UserPlaceholder = R.drawable.ic_user
 }
 
 /**
