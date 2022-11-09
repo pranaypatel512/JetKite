@@ -73,6 +73,7 @@ dependencies {
     implementation(project(":core:components"))
     implementation(project(":core:navigation"))
     implementation(project(":feature:login"))
+    implementation(project(":feature:dashboard"))
 
     implementation("androidx.tracing:tracing-ktx:1.1.0")
     implementation(Lib.Material3.MATERIAL_3)

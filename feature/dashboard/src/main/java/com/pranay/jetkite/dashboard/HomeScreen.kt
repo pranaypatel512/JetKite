@@ -1,4 +1,4 @@
-package com.pranay.jetkite.login
+package com.pranay.jetkite.dashboard
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
