@@ -15,9 +15,7 @@ import com.pranay.jetkite.designsystem.spacing
 
 @Composable
 fun WatchListScreen(
-    onNavigationBackClick: () -> Unit = {},
-    onActionLoginClick: () -> Unit = {},
-    onActionSignUpClick: () -> Unit = {}
+    onNavigationBackClick: () -> Unit = {}
 ) {
     Surface {
         Column(

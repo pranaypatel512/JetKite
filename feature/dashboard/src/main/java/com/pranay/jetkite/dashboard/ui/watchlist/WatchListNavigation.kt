@@ -1,4 +1,4 @@
-package com.pranay.jetkite.dashboard.navigation
+package com.pranay.jetkite.dashboard.ui.watchlist
 
 import androidx.navigation.NavController
 import androidx.navigation.NavGraphBuilder

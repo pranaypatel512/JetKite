@@ -5,8 +5,12 @@ import androidx.compose.ui.Modifier
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import com.pranay.jetkite.dashboard.navigation.TopLevelDestination
-import com.pranay.jetkite.dashboard.navigation.WatchListDestination
-import com.pranay.jetkite.dashboard.navigation.watchListScreen
+import com.pranay.jetkite.dashboard.ui.orders.ordersScreen
+import com.pranay.jetkite.dashboard.ui.portfolio.portfolioScreen
+import com.pranay.jetkite.dashboard.ui.profile.profileScreen
+import com.pranay.jetkite.dashboard.ui.tools.toolsScreen
+import com.pranay.jetkite.dashboard.ui.watchlist.WatchListDestination
+import com.pranay.jetkite.dashboard.ui.watchlist.watchListScreen
 
 /**
  * Top-level navigation graph. Navigation is organized as explained at
@@ -29,7 +33,10 @@ fun JetKiteHomeNavHost(
         startDestination = startDestination,
         modifier = modifier
     ) {
-        watchListScreen {
-        }
+        watchListScreen { }
+        ordersScreen { }
+        portfolioScreen { }
+        toolsScreen { }
+        profileScreen { }
     }
 }

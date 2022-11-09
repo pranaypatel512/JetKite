@@ -19,8 +19,8 @@ object JetKiteIcons {
     val Orders = R.drawable.ic_nav_orders
     val PortfolioBorder = R.drawable.ic_nav_portfolio_border
     val Portfolio = R.drawable.ic_nav_portfolio
-    val SettingsBorder = R.drawable.ic_nav_settings_border
-    val Settings = R.drawable.ic_nav_settings
+    val ToolsBorder = R.drawable.ic_nav_settings_border
+    val Tools = R.drawable.ic_nav_settings
     val ProfileBorder = R.drawable.ic_nav_profile_border
     val Profile = R.drawable.ic_nav_profile
 }

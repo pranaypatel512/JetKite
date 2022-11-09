@@ -46,9 +46,9 @@ enum class TopLevelDestination(
         unselectedIcon = DrawableResourceIcon(JetKiteIcons.PortfolioBorder),
         iconTextId = R.string.portfolio
     ),
-    SETTINGS(
-        selectedIcon = DrawableResourceIcon(JetKiteIcons.Settings),
-        unselectedIcon = DrawableResourceIcon(JetKiteIcons.SettingsBorder),
+    TOOLS(
+        selectedIcon = DrawableResourceIcon(JetKiteIcons.Tools),
+        unselectedIcon = DrawableResourceIcon(JetKiteIcons.ToolsBorder),
         iconTextId = R.string.tools
     ),
     PROFILE(

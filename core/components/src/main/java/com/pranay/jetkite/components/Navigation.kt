@@ -28,7 +28,6 @@ import androidx.compose.material3.NavigationRailItemDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.unit.dp
 
 /**
  * Now in Android navigation bar item with icon and label content slots. Wraps Material 3
@@ -89,7 +88,6 @@ fun JetKiteNavigationBar(
     NavigationBar(
         modifier = modifier,
         contentColor = JetKiteNavigationDefaults.navigationContentColor(),
-        tonalElevation = 1.dp,
         content = content
     )
 }

@@ -26,7 +26,11 @@ import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navOptions
 import com.pranay.jetkite.dashboard.navigation.TopLevelDestination
-import com.pranay.jetkite.dashboard.navigation.navigateWatchList
+import com.pranay.jetkite.dashboard.ui.orders.navigateOrders
+import com.pranay.jetkite.dashboard.ui.portfolio.navigatePortfolio
+import com.pranay.jetkite.dashboard.ui.profile.navigateProfile
+import com.pranay.jetkite.dashboard.ui.tools.navigateTools
+import com.pranay.jetkite.dashboard.ui.watchlist.navigateWatchList
 
 @Composable
 fun rememberHomeNavigationState(
@@ -81,10 +85,10 @@ class HomeNavigationAppState(
 
         when (topLevelDestination) {
             TopLevelDestination.WATCH_LIST -> navController.navigateWatchList(topLevelNavOptions)
-            TopLevelDestination.ORDERS -> navController.navigateWatchList(topLevelNavOptions)
-            TopLevelDestination.PORTFOLIO -> navController.navigateWatchList(topLevelNavOptions)
-            TopLevelDestination.SETTINGS -> navController.navigateWatchList(topLevelNavOptions)
-            TopLevelDestination.PROFILE -> navController.navigateWatchList(topLevelNavOptions)
+            TopLevelDestination.ORDERS -> navController.navigateOrders(topLevelNavOptions)
+            TopLevelDestination.PORTFOLIO -> navController.navigatePortfolio(topLevelNavOptions)
+            TopLevelDestination.TOOLS -> navController.navigateTools(topLevelNavOptions)
+            TopLevelDestination.PROFILE -> navController.navigateProfile(topLevelNavOptions)
         }
     }
 
