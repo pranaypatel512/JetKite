@@ -13,6 +13,16 @@ object JetKiteIcons {
     val VisibilityOff = R.drawable.outline_visibility_off_24
     val OtpSubmit = R.drawable.baseline_arrow_circle_up_24
     val UserPlaceholder = R.drawable.ic_user
+    val BookmarkBorder = R.drawable.ic_nav_bookmark_border
+    val Bookmark = R.drawable.ic_nav_bookmark
+    val OrdersBorder = R.drawable.ic_nav_orders_border
+    val Orders = R.drawable.ic_nav_orders
+    val PortfolioBorder = R.drawable.ic_nav_portfolio_border
+    val Portfolio = R.drawable.ic_nav_portfolio
+    val SettingsBorder = R.drawable.ic_nav_settings_border
+    val Settings = R.drawable.ic_nav_settings
+    val ProfileBorder = R.drawable.ic_nav_profile_border
+    val Profile = R.drawable.ic_nav_profile
 }
 
 /**
