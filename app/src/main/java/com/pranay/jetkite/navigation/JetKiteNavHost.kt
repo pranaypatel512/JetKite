@@ -20,11 +20,11 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
-import com.pranay.jetkite.login.navigation.HomeDestination
+import com.pranay.jetkite.dashboard.navigation.HomeDestination
+import com.pranay.jetkite.dashboard.navigation.homeScreen
 import com.pranay.jetkite.login.navigation.LoginDestination
 import com.pranay.jetkite.login.navigation.SplashDestination
 import com.pranay.jetkite.login.navigation.WelcomeDestination
-import com.pranay.jetkite.login.navigation.homeScreen
 import com.pranay.jetkite.login.navigation.loginScreen
 import com.pranay.jetkite.login.navigation.splashScreen
 import com.pranay.jetkite.login.navigation.welcomeScreen
@@ -66,8 +66,9 @@ fun JetKiteNavHost(
             onSwitchAccountClick = {
             }
         )
-        homeScreen {
+        homeScreen(onNavigationBackClick = {
             onNavigateToDestination(WelcomeDestination, WelcomeDestination.route)
-        }
+        }, {
+        })
     }
 }

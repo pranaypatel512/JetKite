@@ -1,10 +1,10 @@
-package com.pranay.jetkite.login.navigation
+package com.pranay.jetkite.dashboard.navigation
 
 import androidx.navigation.NavController
 import androidx.navigation.NavGraphBuilder
 import androidx.navigation.NavOptions
 import androidx.navigation.compose.composable
-import com.pranay.jetkite.login.HomeScreen
+import com.pranay.jetkite.dashboard.HomeScreen
 import com.pranay.jetkite.navigation.JetKiteNavDestination
 
 object HomeDestination : JetKiteNavDestination {
@@ -17,11 +17,21 @@ fun NavController.navigateToHome(navOptions: NavOptions? = null) {
 }
 
 fun NavGraphBuilder.homeScreen(
-    onNavigationBackClick: () -> Unit = {}
+    onNavigationBackClick: () -> Unit = {},
+    nestedGraphs: NavGraphBuilder.() -> Unit
 ) {
+    /*navigation(
+        route = HomeDestination.route,
+        startDestination = WatchListDestination.route
+    ) {
+        watchListScreen {
+        }
+        nestedGraphs()
+    }*/
     composable(route = HomeDestination.route) {
         HomeScreen(
             onNavigationBackClick = onNavigationBackClick
         )
+        nestedGraphs()
     }
 }
