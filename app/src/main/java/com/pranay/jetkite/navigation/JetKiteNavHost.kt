@@ -22,6 +22,7 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import com.pranay.jetkite.dashboard.navigation.HomeDestination
 import com.pranay.jetkite.dashboard.navigation.homeScreen
+import com.pranay.jetkite.dashboard.navigation.watchListScreen
 import com.pranay.jetkite.login.navigation.LoginDestination
 import com.pranay.jetkite.login.navigation.SplashDestination
 import com.pranay.jetkite.login.navigation.WelcomeDestination
@@ -66,8 +67,10 @@ fun JetKiteNavHost(
             onSwitchAccountClick = {
             }
         )
-        homeScreen {
+        homeScreen(onNavigationBackClick = {
             onNavigateToDestination(WelcomeDestination, WelcomeDestination.route)
-        }
+        }, nestedGraphs = {
+                watchListScreen { }
+            })
     }
 }

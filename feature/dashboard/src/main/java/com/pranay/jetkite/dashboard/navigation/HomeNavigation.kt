@@ -17,11 +17,21 @@ fun NavController.navigateToHome(navOptions: NavOptions? = null) {
 }
 
 fun NavGraphBuilder.homeScreen(
-    onNavigationBackClick: () -> Unit = {}
+    onNavigationBackClick: () -> Unit = {},
+    nestedGraphs: NavGraphBuilder.() -> Unit
 ) {
+    /*navigation(
+        route = HomeDestination.route,
+        startDestination = WatchListDestination.route
+    ) {
+        watchListScreen {
+        }
+        nestedGraphs()
+    }*/
     composable(route = HomeDestination.route) {
         HomeScreen(
             onNavigationBackClick = onNavigationBackClick
         )
+        nestedGraphs()
     }
 }

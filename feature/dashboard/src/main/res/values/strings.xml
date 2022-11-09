@@ -9,4 +9,9 @@
     <string name="enter_sms_email_otp">Enter SMS/email OTP</string>
     <string name="enter_otp_info">Enter the OTP sent to your mobile &amp; email</string>
     <string name="person_icon">Person Icon</string>
+    <string name="watchlist">Watchlist</string>
+    <string name="orders">Orders</string>
+    <string name="portfolio">Portfolio</string>
+    <string name="tools">Tools</string>
+    <string name="profile">Profile</string>
 </resources>
