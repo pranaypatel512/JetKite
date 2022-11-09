@@ -71,6 +71,7 @@ kapt {
 dependencies {
     implementation(project(":core:designsystem"))
     implementation(project(":core:components"))
+    implementation(project(":core:navigation"))
     implementation(project(":feature:login"))
 
     implementation("androidx.tracing:tracing-ktx:1.1.0")

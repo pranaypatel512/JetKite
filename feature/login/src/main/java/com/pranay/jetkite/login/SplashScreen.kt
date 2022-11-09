@@ -1,9 +1,6 @@
 package com.pranay.jetkite.login
 
-import androidx.compose.animation.core.animateFloat
-import androidx.compose.animation.core.infiniteRepeatable
-import androidx.compose.animation.core.rememberInfiniteTransition
-import androidx.compose.animation.core.tween
+import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
@@ -12,29 +9,41 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.material3.LinearProgressIndicator
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.ProgressIndicatorDefaults
 import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import com.pranay.jetkite.components.JetKiteLogo
 import com.pranay.jetkite.components.extension.LightDarkPreview
 import com.pranay.jetkite.designsystem.JetKiteTheme
 import com.pranay.jetkite.designsystem.spacing
+import kotlinx.coroutines.delay
 
 @Composable
-fun LoadingScreen(
+fun SplashScreen(
     onNavigationBackClick: () -> Unit = {},
-    onLoadingCompleted: () -> Unit = {}
+    onLoadingCompleted: () -> Unit
 ) {
-    val progressValue = 1f
+    /*val progressValue = 1f
     val infiniteTransition = rememberInfiniteTransition()
 
     val progressAnimationValue by infiniteTransition.animateFloat(
         initialValue = 0.0f,
         targetValue = progressValue,
         animationSpec = infiniteRepeatable(animation = tween(5000))
-    )
+    )*/
+
+    var progress by remember { mutableStateOf(0.1f) }
+    val animatedProgress = animateFloatAsState(
+        targetValue = progress,
+        animationSpec = ProgressIndicatorDefaults.ProgressAnimationSpec
+    ).value
 
     Surface {
         Column(
@@ -48,7 +57,15 @@ fun LoadingScreen(
                     .padding(vertical = MaterialTheme.spacing.medium)
             )
             Spacer(modifier = Modifier.padding(MaterialTheme.spacing.large))
-            LinearProgressIndicator(progress = progressAnimationValue)
+            LinearProgressIndicator(progress = animatedProgress)
+            LaunchedEffect(progress) {
+                if (progress <= 1f) {
+                    delay(500)
+                    progress += 0.1f
+                } else {
+                    onLoadingCompleted()
+                }
+            }
         }
     }
 }
@@ -57,6 +74,6 @@ fun LoadingScreen(
 @Composable
 fun LoadingScreenPreview() {
     JetKiteTheme {
-        LoadingScreen()
+        SplashScreen {}
     }
 }
