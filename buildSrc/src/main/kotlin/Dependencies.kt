@@ -42,6 +42,7 @@ object Lib {
         private const val WINDOW_METRICES_VERSION = "1.0.0"
         private const val ACTIVITY_VERSION = "1.6.0"
         private const val ACCOMPANIST_ADAPTIVE_VERSION = "0.26.4-beta"
+        private const val LIFECYCLE_VERSION = "2.6.0-alpha03"
 
         const val APP_COMPAT = "androidx.appcompat:appcompat:1.4.1"
 
@@ -55,6 +56,7 @@ object Lib {
         const val ACCOMPANIST_FLOW_LAYOUTS = "com.google.accompanist:accompanist-flowlayout:$ACCOMPANIST_VERSION"
         const val COIL_COMPOSE = "io.coil-kt:coil-compose:$COMPOSE_COIL_VERSION"
         const val COMPOSE_LIVEDATA = "androidx.compose.runtime:runtime-livedata:$COMPOSE_VERSION"
+        const val COMPOSE_LIFECYCLE_RUNTIME = "androidx.lifecycle:lifecycle-runtime-compose:$LIFECYCLE_VERSION"
         const val COMPOSE_NAVIGATION = "androidx.navigation:navigation-compose:$COMPOSE_NAVIGATION_VERSION"
         const val COMPOSE_COMMON_KTX = "androidx.navigation:navigation-common-ktx:$COMPOSE_COMMON"
         const val MATERIAL_DESIGN = "androidx.compose.material:material:$COMPOSE_VERSION"
