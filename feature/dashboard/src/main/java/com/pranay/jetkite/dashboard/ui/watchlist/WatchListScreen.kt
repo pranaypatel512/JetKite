@@ -1,32 +1,50 @@
-package com.pranay.jetkite.dashboard
+package com.pranay.jetkite.dashboard.ui.watchlist
 
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.padding
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
-import com.pranay.jetkite.components.JetKiteTextView
+import androidx.compose.ui.res.stringResource
+import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.lifecycle.compose.ExperimentalLifecycleComposeApi
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import com.pranay.jetkite.components.JetKiteTab
+import com.pranay.jetkite.components.JetKiteTabRow
 import com.pranay.jetkite.components.extension.LightDarkPreview
-import com.pranay.jetkite.components.extension.SystemBarsPaddingSpacer
 import com.pranay.jetkite.designsystem.JetKiteTheme
-import com.pranay.jetkite.designsystem.spacing
 
+@OptIn(ExperimentalLifecycleComposeApi::class)
 @Composable
 fun WatchListScreen(
+    viewModel: WatchListViewModel = hiltViewModel(),
     onNavigationBackClick: () -> Unit = {}
 ) {
+    val tabState by viewModel.tabState.collectAsStateWithLifecycle()
+
     Surface {
-        Column(
-            modifier = Modifier.fillMaxSize().padding(horizontal = MaterialTheme.spacing.medium)
-        ) {
-            SystemBarsPaddingSpacer()
-            JetKiteTextView(
-                text = "Watchlist screen",
-                style = MaterialTheme.typography.displaySmall
-            )
+        WatchListContent(tabState = tabState, switchTab = viewModel::switchTab)
+    }
+}
+
+@Composable
+private fun WatchListContent(
+    tabState: WatchListTabState,
+    switchTab: (Int) -> Unit,
+    modifier: Modifier = Modifier
+) {
+    Column(modifier) {
+        JetKiteTabRow(selectedTabIndex = tabState.currentIndex) {
+            tabState.titles.forEachIndexed { index, titleId ->
+                JetKiteTab(
+                    selected = index == tabState.currentIndex,
+                    onClick = { switchTab(index) },
+                    text = { Text(text = stringResource(id = titleId)) }
+                )
+            }
         }
+        WatchListPage(currentTab = tabState.currentIndex)
     }
 }
 
