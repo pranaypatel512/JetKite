@@ -14,4 +14,12 @@
     <string name="portfolio">Portfolio</string>
     <string name="tools">Tools</string>
     <string name="profile">Profile</string>
+    <string name="mw1">MW1</string>
+    <string name="mw2">MW2</string>
+    <string name="mw3">MW3</string>
+    <string name="mw4">MW4</string>
+    <string name="mw5">MW5</string>
+    <string name="mw6">MW6</string>
+    <string name="mw7">MW7</string>
+    <string name="mw8">MW8</string>
 </resources>
