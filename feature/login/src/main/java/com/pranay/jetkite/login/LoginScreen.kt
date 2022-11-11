@@ -289,7 +289,12 @@ fun LoginScreen(
 }
 
 @Composable
-fun UserInfoView(modifier: Modifier = Modifier, name: String, initials: String, userID: String) {
+fun UserInfoView(
+    name: String,
+    initials: String,
+    userID: String,
+    modifier: Modifier = Modifier
+) {
     Column(horizontalAlignment = Alignment.CenterHorizontally, modifier = Modifier.fillMaxWidth()) {
         Box(
             contentAlignment = Alignment.Center,
