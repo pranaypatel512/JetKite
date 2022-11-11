@@ -57,14 +57,9 @@ class Spacing internal constructor(
 }
 
 /**
- * CompositionLocal used to specify the default [Spacing] for composables.
- * */
-val LocalSpacing = staticCompositionLocalOf { Spacing() }
-
-/**
  * Retrieves the current [Spacing] at the call site's position in the hierarchy.
  */
 val MaterialTheme.spacing
     @Composable
     @ReadOnlyComposable
-    get() = LocalSpacing.current
+    get() = staticCompositionLocalOf { Spacing() }.current

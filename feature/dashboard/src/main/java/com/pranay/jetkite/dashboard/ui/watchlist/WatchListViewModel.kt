@@ -19,11 +19,11 @@ package com.pranay.jetkite.dashboard.ui.watchlist
 import androidx.lifecycle.ViewModel
 import com.pranay.jetkite.dashboard.R
 import dagger.hilt.android.lifecycle.HiltViewModel
-import javax.inject.Inject
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
+import javax.inject.Inject
 
 @HiltViewModel
 class WatchListViewModel @Inject constructor() : ViewModel() {

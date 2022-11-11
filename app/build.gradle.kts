@@ -6,6 +6,7 @@ plugins {
     id(BuildPlugins.KOTLIN_PARCELABLE_PLUGIN)
     id(BuildPlugins.KOTLIN_KAPT)
     id(BuildPlugins.DAGGER_HILT)
+    id(BuildPlugins.KOTLINTER)
 }
 
 android {

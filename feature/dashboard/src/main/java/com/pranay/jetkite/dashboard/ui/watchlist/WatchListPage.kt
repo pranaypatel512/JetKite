@@ -7,12 +7,12 @@ import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import com.pranay.jetkite.components.JetKiteTextView
-import com.pranay.jetkite.components.extension.LightDarkPreview
+import com.pranay.jetkite.components.extension.LightDarkPreviews
 import com.pranay.jetkite.components.extension.SystemBarsPaddingSpacer
 import com.pranay.jetkite.designsystem.JetKiteTheme
 
 @Composable
-fun WatchListPage(currentTab: Int) {
+fun WatchListPage(currentTab: Int, modifier: Modifier = Modifier) {
     Surface {
         Column(
             modifier = Modifier.fillMaxSize()
@@ -27,7 +27,7 @@ fun WatchListPage(currentTab: Int) {
     }
 }
 
-@LightDarkPreview
+@LightDarkPreviews
 @Composable
 fun WatchListPagePreview() {
     JetKiteTheme {

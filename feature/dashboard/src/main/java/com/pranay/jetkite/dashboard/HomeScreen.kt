@@ -22,15 +22,17 @@ import androidx.navigation.NavDestination
 import androidx.navigation.NavDestination.Companion.hierarchy
 import com.pranay.jetkite.components.JetKiteNavigationBar
 import com.pranay.jetkite.components.JetKiteNavigationBarItem
-import com.pranay.jetkite.components.extension.LightDarkPreview
+import com.pranay.jetkite.components.extension.LightDarkPreviews
 import com.pranay.jetkite.components.icons.Icon
 import com.pranay.jetkite.dashboard.navigation.TopLevelDestination
+import com.pranay.jetkite.dashboard.navigation.TopLevelDestinationList
 import com.pranay.jetkite.dashboard.ui.JetKiteHomeNavHost
 import com.pranay.jetkite.designsystem.JetKiteTheme
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun HomeScreen(
+    modifier: Modifier = Modifier,
     appState: HomeNavigationAppState = rememberHomeNavigationState(),
     onNavigationBackClick: () -> Unit = {}
 ) {
@@ -69,12 +71,13 @@ fun HomeScreen(
 
 @Composable
 private fun JetKiteBottomBar(
-    destinations: List<TopLevelDestination>,
+    destinations: TopLevelDestinationList,
     onNavigateToDestination: (TopLevelDestination) -> Unit,
-    currentDestination: NavDestination?
+    currentDestination: NavDestination?,
+    modifier: Modifier = Modifier
 ) {
     JetKiteNavigationBar {
-        destinations.forEach { destination ->
+        destinations.items.forEach { destination ->
             val selected = currentDestination.isTopLevelDestinationInHierarchy(destination)
             JetKiteNavigationBarItem(
                 selected = selected,
@@ -108,7 +111,7 @@ private fun NavDestination?.isTopLevelDestinationInHierarchy(destination: TopLev
         it.route?.contains(destination.name, true) ?: false
     } ?: false
 
-@LightDarkPreview
+@LightDarkPreviews
 @Composable
 fun HomeScreenPreview() {
     JetKiteTheme {

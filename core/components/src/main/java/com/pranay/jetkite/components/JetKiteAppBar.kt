@@ -47,7 +47,7 @@ fun JetKiteAppBar(
 }
 
 @Composable
-fun JetBackArrow(onBackClick: () -> Unit = {}) {
+fun JetBackArrow(modifier: Modifier = Modifier, onBackClick: () -> Unit = {}) {
     IconButton(onClick = { onBackClick() }) {
         Icon(
             imageVector = Icons.Filled.ArrowBack,

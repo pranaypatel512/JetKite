@@ -6,6 +6,9 @@ object BuildPlugins {
     private const val TOOLS_BUILD = "7.2.1"
     private const val KT_LINT = "9.2.1"
     private const val SAFE_ARGS = "2.3.5"
+    const val KOTLINTER_VERSION = "3.12.0"
+    const val TWITTER_COMPOSE_RULES_VER = "0.0.22"
+
 
     const val TOOLS_BUILD_GRADLE = "com.android.tools.build:gradle:$TOOLS_BUILD"
     const val KTLINT_GRADLE_PLUGIN = "org.jlleitschuh.gradle:ktlint-gradle:$KT_LINT"
@@ -19,14 +22,19 @@ object BuildPlugins {
     const val KTLINT = "org.jlleitschuh.gradle.ktlint"
     const val DAGGER_HILT = "dagger.hilt.android.plugin"
     const val SAFE_ARGS_KOTLIN = "androidx.navigation.safeargs.kotlin"
+    const val KOTLINTER = "org.jmailen.kotlinter"
+    const val TWITTER_COMPOSE_RULES = "com.twitter.compose.rules:ktlint:$TWITTER_COMPOSE_RULES_VER"
+
 }
 
 object Lib {
     object Kotlin {
         const val KOTLIN_VERSION = "1.7.10"
+        const val KOTLIN_IMMUTABLE_VERSION = "0.3.5"
         private const val KTX_CORE_VERSION = "1.7.0"
         const val KT_STD = "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$KOTLIN_VERSION"
         const val KTX_CORE = "androidx.core:core-ktx:$KTX_CORE_VERSION"
+        const val KOTLIN_IMMUTABLE = "org.jetbrains.kotlinx:kotlinx-collections-immutable:$KOTLIN_IMMUTABLE_VERSION"
     }
 
     object Android {

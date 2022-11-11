@@ -44,7 +44,7 @@ import com.pranay.jetkite.components.JetKiteTextView
 import com.pranay.jetkite.components.JetKiteTextViewPrimary
 import com.pranay.jetkite.components.R
 import com.pranay.jetkite.components.TouchIdButton
-import com.pranay.jetkite.components.extension.LightDarkPreview
+import com.pranay.jetkite.components.extension.LightDarkPreviews
 import com.pranay.jetkite.components.extension.clickableWithRipple
 import com.pranay.jetkite.components.icons.JetKiteIcons
 import com.pranay.jetkite.designsystem.JetKiteTheme
@@ -54,6 +54,7 @@ import kotlinx.coroutines.delay
 
 @Composable
 fun LoginScreen(
+    modifier: Modifier = Modifier,
     loginState: LoginState = LoginState.LoginStateNew,
     onNavigationBackClick: () -> Unit = {},
     onForgotClick: () -> Unit = {},
@@ -151,14 +152,22 @@ fun LoginScreen(
                     }
                     Spacer(modifier = Modifier.padding(MaterialTheme.spacing.extraSmall))
                     JetKiteTextView(
-                        modifier = if (seconds > 0) Modifier.padding(horizontal = MaterialTheme.spacing.medium) else Modifier.padding(
-                            horizontal = MaterialTheme.spacing.medium
+                        modifier = Modifier.then(
+                            if (seconds > 0) {
+                                Modifier.padding(horizontal = MaterialTheme.spacing.medium)
+                            } else {
+                                Modifier.padding(
+                                    horizontal = MaterialTheme.spacing.medium
+                                )
+                            }
                         ).clickableWithRipple { },
                         text = if (seconds > 0) "Resend OTP in $seconds seconds" else "Reset OTP",
                         style = MaterialTheme.typography.titleSmall.copy(
-                            if (seconds > 0) MaterialTheme.colorScheme.outline.copy(
-                                alpha = 0.5f
-                            ) else MaterialTheme.colorScheme.outline.copy(alpha = 0.9f)
+                            if (seconds > 0) {
+                                MaterialTheme.colorScheme.outline.copy(alpha = 0.5f)
+                            } else {
+                                MaterialTheme.colorScheme.outline.copy(alpha = 0.9f)
+                            }
                         )
                     )
                 }
@@ -166,7 +175,11 @@ fun LoginScreen(
             }
             if (loginState != LoginState.LoginStateNew) {
                 Spacer(modifier = Modifier.padding(MaterialTheme.spacing.small))
-                UserInfoView("Pranaykumar Atulbhai Patel", "PA", "AA0000")
+                UserInfoView(
+                    name = "Pranaykumar Atulbhai Patel",
+                    initials = "PA",
+                    userID = "AA0000"
+                )
             } else {
                 Spacer(modifier = Modifier.padding(MaterialTheme.spacing.small))
             }
@@ -276,7 +289,7 @@ fun LoginScreen(
 }
 
 @Composable
-fun UserInfoView(name: String, initials: String, userID: String) {
+fun UserInfoView(modifier: Modifier = Modifier, name: String, initials: String, userID: String) {
     Column(horizontalAlignment = Alignment.CenterHorizontally, modifier = Modifier.fillMaxWidth()) {
         Box(
             contentAlignment = Alignment.Center,
@@ -304,7 +317,7 @@ fun UserInfoView(name: String, initials: String, userID: String) {
     }
 }
 
-@LightDarkPreview
+@LightDarkPreviews
 @Composable
 fun LoginScreenPreview() {
     JetKiteTheme {
@@ -336,10 +349,10 @@ fun LoginScreenPreviewOTP() {
     }
 }
 
-@LightDarkPreview
+@LightDarkPreviews
 @Composable
 fun UserInfoViewPreview() {
     JetKiteTheme {
-        UserInfoView("Pranay", "PA", "AA0000")
+        UserInfoView(name = "Pranaykumar Atulbhai Patel", initials = "PA", userID = "AA0000")
     }
 }

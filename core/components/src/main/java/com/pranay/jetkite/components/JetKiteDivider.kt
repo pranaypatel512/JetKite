@@ -13,8 +13,8 @@ import com.pranay.jetkite.designsystem.spacing
 
 @Composable
 fun JetKiteDivider(
-    modifier: Modifier = Modifier,
     thickness: Dp,
+    modifier: Modifier = Modifier,
     color: Color = MaterialTheme.colorScheme.outline.copy(alpha = 0.2f)
 ) {
     Divider(thickness = thickness, color = color, modifier = modifier)

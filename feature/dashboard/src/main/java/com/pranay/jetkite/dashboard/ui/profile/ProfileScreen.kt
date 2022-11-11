@@ -8,13 +8,14 @@ import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import com.pranay.jetkite.components.JetKiteTextView
-import com.pranay.jetkite.components.extension.LightDarkPreview
+import com.pranay.jetkite.components.extension.LightDarkPreviews
 import com.pranay.jetkite.components.extension.SystemBarsPaddingSpacer
 import com.pranay.jetkite.designsystem.JetKiteTheme
 import com.pranay.jetkite.designsystem.spacing
 
 @Composable
 fun ProfileScreen(
+    modifier: Modifier = Modifier,
     onNavigationBackClick: () -> Unit = {}
 ) {
     Surface {
@@ -30,7 +31,7 @@ fun ProfileScreen(
     }
 }
 
-@LightDarkPreview
+@LightDarkPreviews
 @Composable
 fun ProfileScreenPreview() {
     JetKiteTheme {

@@ -17,12 +17,12 @@ import androidx.compose.ui.graphics.RectangleShape
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
-import com.pranay.jetkite.components.extension.LightDarkPreview
+import com.pranay.jetkite.components.extension.LightDarkPreviews
 import com.pranay.jetkite.designsystem.JetKiteTheme
 import com.pranay.jetkite.designsystem.spacing
 
 @Composable
-fun TouchIdButton(modifier: Modifier = Modifier, text: String, onTouchButtonClick: () -> Unit) {
+fun TouchIdButton(text: String, modifier: Modifier = Modifier, onTouchButtonClick: () -> Unit) {
     OutlinedButton(
         onClick = onTouchButtonClick,
         shape = RectangleShape,
@@ -47,7 +47,7 @@ fun TouchIdButton(modifier: Modifier = Modifier, text: String, onTouchButtonClic
     }
 }
 
-@LightDarkPreview
+@LightDarkPreviews
 @Composable
 fun TouchIdButtonreview() {
     JetKiteTheme {

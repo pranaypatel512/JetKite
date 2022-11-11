@@ -20,13 +20,14 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import com.pranay.jetkite.components.JetKiteLogo
-import com.pranay.jetkite.components.extension.LightDarkPreview
+import com.pranay.jetkite.components.extension.LightDarkPreviews
 import com.pranay.jetkite.designsystem.JetKiteTheme
 import com.pranay.jetkite.designsystem.spacing
 import kotlinx.coroutines.delay
 
 @Composable
 fun SplashScreen(
+    modifier: Modifier = Modifier,
     onNavigationBackClick: () -> Unit = {},
     onLoadingCompleted: () -> Unit
 ) {
@@ -70,7 +71,7 @@ fun SplashScreen(
     }
 }
 
-@LightDarkPreview
+@LightDarkPreviews
 @Composable
 fun LoadingScreenPreview() {
     JetKiteTheme {

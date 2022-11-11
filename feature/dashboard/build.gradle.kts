@@ -69,6 +69,7 @@ dependencies {
     implementation(Lib.Android.COMPOSE_NAVIGATION)
     implementation(Lib.Android.COMPOSE_COMMON_KTX)
     implementation(Lib.Android.COMPOSE_LIFECYCLE_RUNTIME)
+    implementation(Lib.Kotlin.KOTLIN_IMMUTABLE)
 
     implementation(Lib.Di.hiltAndroid)
     implementation(Lib.Di.hiltNavigationCompose)

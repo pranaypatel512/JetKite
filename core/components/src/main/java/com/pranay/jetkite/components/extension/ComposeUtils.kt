@@ -12,13 +12,14 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 
 @Composable
-fun SystemBarsPaddingSpacer() {
-    Spacer(modifier = Modifier.systemBarsPadding())
+fun SystemBarsPaddingSpacer(modifier: Modifier = Modifier) {
+    Spacer(modifier = modifier.systemBarsPadding())
 }
 
+/* ktlint-disable twitter-compose:modifier-composable-check */
 @SuppressLint("ComposableModifierFactory")
 @Composable
-fun Modifier.clickableWithRipple(
+fun Modifier.clickableWithRipple( // ktlint-disable modifier-composable-check
     interactionSource: MutableInteractionSource = remember { MutableInteractionSource() },
     indication: Indication = rememberRipple(),
     onClick: () -> Unit
@@ -27,3 +28,4 @@ fun Modifier.clickableWithRipple(
     indication = indication,
     onClick = onClick
 )
+/* ktlint-enable twitter-compose:modifier-composable-check */

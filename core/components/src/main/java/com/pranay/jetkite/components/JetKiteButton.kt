@@ -13,7 +13,7 @@ import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.style.TextOverflow
-import com.pranay.jetkite.components.extension.LightDarkPreview
+import com.pranay.jetkite.components.extension.LightDarkPreviews
 import com.pranay.jetkite.designsystem.JetKiteTheme
 import com.pranay.jetkite.designsystem.color_white
 import com.pranay.jetkite.designsystem.spacing
@@ -21,8 +21,8 @@ import com.pranay.jetkite.designsystem.spacing
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun JetKiteButton(
-    modifier: Modifier = Modifier,
     text: String,
+    modifier: Modifier = Modifier,
     enabled: Boolean = true,
     onClick: () -> Unit
 ) {
@@ -56,7 +56,7 @@ fun JetKiteButton(
 }
 
 @Composable
-@LightDarkPreview
+@LightDarkPreviews
 fun JetKiteButtonPreview() {
     JetKiteTheme {
         Surface {

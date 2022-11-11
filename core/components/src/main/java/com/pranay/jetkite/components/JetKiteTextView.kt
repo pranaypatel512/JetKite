@@ -24,8 +24,8 @@ import com.pranay.jetkite.designsystem.JetKiteTheme
 
 @Composable
 fun JetKiteTextView(
-    modifier: Modifier = Modifier,
     text: String,
+    modifier: Modifier = Modifier,
     style: TextStyle = LocalTextStyle.current,
     textColor: Color = Color.Unspecified,
     fontSize: TextUnit = TextUnit.Unspecified,
@@ -61,8 +61,8 @@ fun JetKiteTextView(
 
 @Composable
 fun JetKiteTextViewPrimary(
-    modifier: Modifier = Modifier,
     text: String,
+    modifier: Modifier = Modifier,
     onTextViewClick: () -> Unit = {}
 ) {
     JetKiteTextView(

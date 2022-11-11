@@ -21,15 +21,15 @@ import androidx.compose.ui.graphics.Shape
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.text.input.VisualTransformation
-import com.pranay.jetkite.components.extension.LightDarkPreview
+import com.pranay.jetkite.components.extension.LightDarkPreviews
 import com.pranay.jetkite.designsystem.JetKiteTheme
 import com.pranay.jetkite.designsystem.spacing
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun JetKiteTextField(
-    modifier: Modifier = Modifier,
     textValue: TextFieldValue,
+    modifier: Modifier = Modifier,
     enabled: Boolean = true,
     readOnly: Boolean = false,
     textStyle: TextStyle = LocalTextStyle.current,
@@ -85,7 +85,7 @@ fun JetKiteTextField(
 }
 
 @Composable
-@LightDarkPreview
+@LightDarkPreviews
 fun JetKiteTextFieldPreview() {
     val textUserName by remember { mutableStateOf(TextFieldValue("")) }
 

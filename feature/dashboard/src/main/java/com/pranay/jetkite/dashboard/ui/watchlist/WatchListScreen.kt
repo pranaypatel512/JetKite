@@ -12,12 +12,13 @@ import androidx.lifecycle.compose.ExperimentalLifecycleComposeApi
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.pranay.jetkite.components.JetKiteTab
 import com.pranay.jetkite.components.JetKiteTabRow
-import com.pranay.jetkite.components.extension.LightDarkPreview
+import com.pranay.jetkite.components.extension.LightDarkPreviews
 import com.pranay.jetkite.designsystem.JetKiteTheme
 
 @OptIn(ExperimentalLifecycleComposeApi::class)
 @Composable
 fun WatchListScreen(
+    modifier: Modifier = Modifier,
     viewModel: WatchListViewModel = hiltViewModel(),
     onNavigationBackClick: () -> Unit = {}
 ) {
@@ -48,7 +49,7 @@ private fun WatchListContent(
     }
 }
 
-@LightDarkPreview
+@LightDarkPreviews
 @Composable
 fun WatchListScreenPreview() {
     JetKiteTheme {

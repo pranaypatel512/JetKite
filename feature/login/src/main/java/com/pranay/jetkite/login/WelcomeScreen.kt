@@ -16,7 +16,7 @@ import com.pranay.jetkite.components.JetKiteLogo
 import com.pranay.jetkite.components.JetKiteTextView
 import com.pranay.jetkite.components.R
 import com.pranay.jetkite.components.TextViewWithEndIcon
-import com.pranay.jetkite.components.extension.LightDarkPreview
+import com.pranay.jetkite.components.extension.LightDarkPreviews
 import com.pranay.jetkite.components.extension.SystemBarsPaddingSpacer
 import com.pranay.jetkite.components.icons.JetKiteIcons
 import com.pranay.jetkite.designsystem.JetKiteTheme
@@ -24,6 +24,7 @@ import com.pranay.jetkite.designsystem.spacing
 
 @Composable
 fun WelcomeScreen(
+    modifier: Modifier = Modifier,
     onNavigationBackClick: () -> Unit = {},
     onActionLoginClick: () -> Unit = {},
     onActionSignUpClick: () -> Unit = {}
@@ -58,7 +59,7 @@ fun WelcomeScreen(
     }
 }
 
-@LightDarkPreview
+@LightDarkPreviews
 @Composable
 fun WelcomeScreenPreview() {
     JetKiteTheme {
