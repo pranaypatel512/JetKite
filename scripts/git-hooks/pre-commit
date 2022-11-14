@@ -2,28 +2,12 @@
 
 echo "
 ===============
-|  Running ktlint check......
-===============
-"
-
-./gradlew app:ktlintCheck --daemon
-
-status=$?
-
-# return 1 exit code if running checks fails
-[ $status -ne 0 ] && exit 1
-exit 0
-
-echo "
-===============
 |  Running kotlinter check......
 ===============
 "
 
-./gradlew app:lintKotlin --daemon
-
-status=$?
-
-# return 1 exit code if running checks fails
-[ $status -ne 0 ] && exit 1
-exit 0
+if ! ./gradlew lintKotlin ; then
+    printf 1>&2 "\nlintKotlin found problems, running formatKotlin; commit the result and re-push"
+    $GRADLEW formatKotlin
+    exit 1
+fi
