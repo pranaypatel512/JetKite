@@ -70,6 +70,8 @@ dependencies {
     implementation(Lib.Android.COMPOSE_COMMON_KTX)
     implementation(Lib.Android.COMPOSE_LIFECYCLE_RUNTIME)
     implementation(Lib.Kotlin.KOTLIN_IMMUTABLE)
+    implementation(Lib.Android.ACCOMPANIST_PAGER)
+    implementation(Lib.Android.ACCOMPANIST_PAGER_INDICATOR)
 
     implementation(Lib.Di.hiltAndroid)
     implementation(Lib.Di.hiltNavigationCompose)

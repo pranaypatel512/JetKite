@@ -10,42 +10,69 @@ import androidx.compose.ui.res.stringResource
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.ExperimentalLifecycleComposeApi
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import com.google.accompanist.pager.ExperimentalPagerApi
+import com.google.accompanist.pager.HorizontalPager
+import com.google.accompanist.pager.PagerState
+import com.google.accompanist.pager.rememberPagerState
 import com.pranay.jetkite.components.JetKiteTab
 import com.pranay.jetkite.components.JetKiteTabRow
 import com.pranay.jetkite.components.extension.LightDarkPreviews
 import com.pranay.jetkite.designsystem.JetKiteTheme
 
-@OptIn(ExperimentalLifecycleComposeApi::class)
+@OptIn(ExperimentalLifecycleComposeApi::class, ExperimentalPagerApi::class)
 @Composable
 fun WatchListScreen(
-    viewModel: WatchListViewModel = hiltViewModel(),
     modifier: Modifier = Modifier,
+    viewModel: WatchListViewModel = hiltViewModel(),
     onNavigationBackClick: () -> Unit = {}
 ) {
     val tabState by viewModel.tabState.collectAsStateWithLifecycle()
+    val pagerState = rememberPagerState(tabState.currentIndex)
 
     Surface {
-        WatchListContent(tabState = tabState, switchTab = viewModel::switchTab)
+        // WatchListContent(tabState = tabState, pagerState = pagerState, switchTab = viewModel::switchTab)
+        Column(modifier) {
+            JetKiteTabRow(selectedTabIndex = pagerState.currentPage, pagerState = pagerState) {
+                tabState.titles.forEachIndexed { index, titleId ->
+                    JetKiteTab(
+                        selected = pagerState.currentPage == index,
+                        onClick = {
+                            // switchTab(index)
+                        },
+                        text = { Text(text = stringResource(id = titleId)) }
+                    )
+                }
+            }
+            HorizontalPager(count = tabState.titles.size, state = pagerState) { tabIndex ->
+                WatchListPage(currentTab = tabIndex)
+            }
+        }
     }
 }
 
+@OptIn(ExperimentalPagerApi::class)
 @Composable
 private fun WatchListContent(
     tabState: WatchListTabState,
+    pagerState: PagerState,
     switchTab: (Int) -> Unit,
     modifier: Modifier = Modifier
 ) {
     Column(modifier) {
-        JetKiteTabRow(selectedTabIndex = tabState.currentIndex) {
+        JetKiteTabRow(selectedTabIndex = pagerState.currentPage, pagerState = pagerState) {
             tabState.titles.forEachIndexed { index, titleId ->
                 JetKiteTab(
-                    selected = index == tabState.currentIndex,
-                    onClick = { switchTab(index) },
+                    selected = pagerState.currentPage == index,
+                    onClick = {
+                        // switchTab(index)
+                    },
                     text = { Text(text = stringResource(id = titleId)) }
                 )
             }
         }
-        WatchListPage(currentTab = tabState.currentIndex)
+        HorizontalPager(count = tabState.titles.size, state = pagerState) { tabIndex ->
+            WatchListPage(currentTab = tabIndex)
+        }
     }
 }
 

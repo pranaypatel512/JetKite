@@ -58,5 +58,6 @@ dependencies {
     implementation(Lib.Kotlin.KTX_CORE)
     implementation(Lib.Android.COMPOSE_TOOLING_PREVIEW)
     debugImplementation(Lib.Android.COMPOSE_TOOLING)
-
+    implementation(Lib.Android.ACCOMPANIST_PAGER)
+    implementation(Lib.Android.ACCOMPANIST_PAGER_INDICATOR)
 }
