@@ -38,11 +38,10 @@ tasks.register("clean").configure {
     delete(rootProject.buildDir)
 }
 
-apply(from = teamPropsFile("git-hooks.gradle.kts"))
-
-fun teamPropsFile(propsFile: String): File {
-    val teamPropsDir = file("team-props")
-    return File(teamPropsDir, propsFile)
+tasks.register("installGitHook", Copy::class) {
+    from("${rootProject.rootDir}/scripts/git-hooks")
+    into("${rootProject.rootDir}/.git/hooks")
+    fileMode = 7 * 64 + 7 * 8 + 7
 }
 
 tasks.register("check").configure {
