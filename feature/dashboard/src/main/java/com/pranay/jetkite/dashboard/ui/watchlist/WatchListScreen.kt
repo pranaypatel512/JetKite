@@ -18,8 +18,8 @@ import com.pranay.jetkite.designsystem.JetKiteTheme
 @OptIn(ExperimentalLifecycleComposeApi::class)
 @Composable
 fun WatchListScreen(
-    modifier: Modifier = Modifier,
     viewModel: WatchListViewModel = hiltViewModel(),
+    modifier: Modifier = Modifier,
     onNavigationBackClick: () -> Unit = {}
 ) {
     val tabState by viewModel.tabState.collectAsStateWithLifecycle()
