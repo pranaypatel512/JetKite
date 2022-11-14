@@ -24,9 +24,9 @@ fun JetKiteHomeNavHost(
     navController: NavHostController,
     onNavigateToDestination: (TopLevelDestination, String) -> Unit,
     onBackClick: () -> Unit,
+    isExpandedScreen: Boolean,
     modifier: Modifier = Modifier,
-    startDestination: String = WatchListDestination.route,
-    isExpandedScreen: Boolean
+    startDestination: String = WatchListDestination.route
 ) {
     NavHost(
         navController = navController,

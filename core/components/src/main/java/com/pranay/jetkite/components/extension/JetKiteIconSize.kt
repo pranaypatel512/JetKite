@@ -12,5 +12,4 @@ object JetKiteIconSize {
     val SmallIcon = 12.dp
     val SizeButton = 42.dp
     val SmallImage = 80.dp
-
 }

@@ -45,6 +45,7 @@ import com.pranay.jetkite.navigation.JetKiteNavHost
 @Composable
 fun JetKiteApp(
     windowSizeClass: WindowSizeClass,
+    modifier: Modifier = Modifier,
     appState: JetKiteAppState = rememberJetKiteAppState(windowSizeClass)
 ) {
     JetKiteTheme {

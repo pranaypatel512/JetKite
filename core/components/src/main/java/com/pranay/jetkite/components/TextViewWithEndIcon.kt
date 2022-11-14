@@ -16,9 +16,9 @@ import com.pranay.jetkite.designsystem.JetKiteTheme
 
 @Composable
 fun TextViewWithEndIcon(
-    modifier: Modifier = Modifier,
     text: String,
     iconRes: Int,
+    modifier: Modifier = Modifier,
     onOptionClick: () -> Unit = {}
 ) {
     Box(

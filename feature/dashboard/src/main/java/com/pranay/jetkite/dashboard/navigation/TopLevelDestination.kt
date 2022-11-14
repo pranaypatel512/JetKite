@@ -16,6 +16,7 @@
 
 package com.pranay.jetkite.dashboard.navigation
 
+import androidx.compose.runtime.Immutable
 import com.pranay.jetkite.components.icons.Icon
 import com.pranay.jetkite.components.icons.Icon.DrawableResourceIcon
 import com.pranay.jetkite.components.icons.JetKiteIcons
@@ -57,3 +58,6 @@ enum class TopLevelDestination(
         iconTextId = R.string.profile
     )
 }
+
+@Immutable
+data class TopLevelDestinationList(val items: List<TopLevelDestination>)

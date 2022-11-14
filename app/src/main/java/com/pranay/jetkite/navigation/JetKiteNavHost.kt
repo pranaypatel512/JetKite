@@ -39,11 +39,11 @@ import com.pranay.jetkite.login.navigation.welcomeScreen
 @Composable
 fun JetKiteNavHost(
     navController: NavHostController,
+    isExpandedScreen: Boolean,
     onNavigateToDestination: (JetKiteNavDestination, String) -> Unit,
-    onBackClick: () -> Unit,
     modifier: Modifier = Modifier,
     startDestination: String = SplashDestination.route,
-    isExpandedScreen: Boolean
+    onBackClick: () -> Unit
 ) {
     NavHost(
         navController = navController,

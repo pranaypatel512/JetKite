@@ -1,3 +1,6 @@
+plugins {
+    id(BuildPlugins.KOTLINTER) version BuildPlugins.KOTLINTER_VERSION apply true
+}
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
 buildscript {
     repositories {
@@ -9,10 +12,12 @@ buildscript {
         classpath(BuildPlugins.DAGGER_HILT_PLUGIN)
         classpath(BuildPlugins.KOTLIN_GRADLE_PLUGIN)
         classpath(BuildPlugins.KTLINT_GRADLE_PLUGIN)
+        classpath(BuildPlugins.TWITTER_COMPOSE_RULES)
     }
 }
 subprojects {
     apply(plugin = "org.jlleitschuh.gradle.ktlint")
+    apply(plugin = BuildPlugins.KOTLINTER)
 }
 allprojects {
     repositories {
@@ -38,4 +43,16 @@ apply(from = teamPropsFile("git-hooks.gradle.kts"))
 fun teamPropsFile(propsFile: String): File {
     val teamPropsDir = file("team-props")
     return File(teamPropsDir, propsFile)
+}
+
+tasks.register("check").configure {
+    dependsOn("installKotlinterPrePushHook")
+}
+
+kotlinter {
+    ignoreFailures = false
+    reporters = arrayOf("checkstyle", "html", "plain")
+    experimentalRules = true
+    disabledRules = emptyArray()
+    // disabledRules = arrayOf("experimental:argument-list-wrapping", "no-wildcard-imports")
 }

@@ -26,6 +26,7 @@ import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navOptions
 import com.pranay.jetkite.dashboard.navigation.TopLevelDestination
+import com.pranay.jetkite.dashboard.navigation.TopLevelDestinationList
 import com.pranay.jetkite.dashboard.ui.orders.navigateOrders
 import com.pranay.jetkite.dashboard.ui.portfolio.navigatePortfolio
 import com.pranay.jetkite.dashboard.ui.profile.navigateProfile
@@ -52,7 +53,7 @@ class HomeNavigationAppState(
     /**
      * Top level destinations to be used in the BottomBar and NavRail
      */
-    val topLevelDestinations: List<TopLevelDestination> = TopLevelDestination.values().asList()
+    val topLevelDestinations: TopLevelDestinationList = TopLevelDestinationList(TopLevelDestination.values().asList())
 
     /**
      * UI logic for navigating to a top level destination in the app. Top level destinations have
