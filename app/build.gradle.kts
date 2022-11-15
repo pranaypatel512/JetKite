@@ -110,6 +110,8 @@ dependencies {
     kapt(Lib.Di.hiltCompiler)
     kapt(Lib.Di.hiltAndroidCompiler)
 
+    implementation(Lib.Android.ACCOMPANIST_PAGER)
+    implementation(Lib.Android.ACCOMPANIST_PAGER_INDICATOR)
     /* Logger */
     // implementation(Lib.Logger.TIMBER)
     /* Async */

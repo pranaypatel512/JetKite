@@ -50,6 +50,7 @@ object Lib {
         private const val WINDOW_METRICES_VERSION = "1.0.0"
         private const val ACTIVITY_VERSION = "1.6.0"
         private const val ACCOMPANIST_ADAPTIVE_VERSION = "0.26.4-beta"
+        private const val ACCOMPANIST_PAGER_LAYOUT = "0.27.0"
         private const val LIFECYCLE_VERSION = "2.6.0-alpha03"
 
         const val APP_COMPAT = "androidx.appcompat:appcompat:1.4.1"
@@ -73,6 +74,8 @@ object Lib {
         const val ACCOMPANIST_COIL = "com.google.accompanist:accompanist-coil:0.14.0"
         const val ACCOMPANIST_PERMISSION = "com.google.accompanist:accompanist-permissions:$ACCOMPANIST_VERSION"
         const val ACCOMPANIST_ADAPTIVE = "com.google.accompanist:accompanist-adaptive:$ACCOMPANIST_ADAPTIVE_VERSION"
+        const val ACCOMPANIST_PAGER = "com.google.accompanist:accompanist-pager:$ACCOMPANIST_PAGER_LAYOUT"
+        const val ACCOMPANIST_PAGER_INDICATOR = "com.google.accompanist:accompanist-pager-indicators:$ACCOMPANIST_PAGER_LAYOUT"
         const val COMPOSE_JUNIT = "androidx.compose.ui:ui-test-junit4:$COMPOSE_VERSION"
         const val HILT_TESTING = "com.google.dagger:hilt-android-testing:2.44"
         const val KAPT_HILT_TESTING = "com.google.dagger:hilt-android-compiler:2.44"
