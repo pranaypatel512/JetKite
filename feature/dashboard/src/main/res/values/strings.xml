@@ -22,4 +22,7 @@
     <string name="mw6">MW6</string>
     <string name="mw7">MW7</string>
     <string name="mw8">MW8</string>
+    <string name="market_watch">Market Watch</string>
+    <string name="str_close">Close</string>
+    <string name="str_overview">Overview</string>
 </resources>
