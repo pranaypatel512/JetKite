@@ -60,6 +60,9 @@ val md_theme_dark_shadow = Color(0xFF000000)
 val md_theme_dark_surfaceTint = Color(0xFFADC6FF)
 
 val color_white = Color(0xFFFFFFFF)
+val colorSearchBackground = Color(0xFF34454C)
+val colorSearchTextDark = Color(0xFFB0B3B6)
+val colorSearchTextLight = Color(0xFFB0B8BE)
 
 /* Theme 2
 val md_theme_light_primary = Color(0xFF005AC1)

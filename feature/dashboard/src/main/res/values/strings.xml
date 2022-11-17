@@ -24,5 +24,6 @@
     <string name="mw8">MW8</string>
     <string name="market_watch">Market Watch</string>
     <string name="str_close">Close</string>
+    <string name="str_search">Search</string>
     <string name="str_overview">Overview</string>
 </resources>
