@@ -26,4 +26,6 @@
     <string name="str_close">Close</string>
     <string name="str_search">Search</string>
     <string name="str_overview">Overview</string>
+    <string name="str_new_basket">+ New basket</string>
+    <string name="str_search_add">Search &amp; add</string>
 </resources>

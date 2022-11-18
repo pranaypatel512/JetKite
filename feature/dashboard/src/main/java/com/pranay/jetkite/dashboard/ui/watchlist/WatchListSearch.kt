@@ -23,7 +23,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
-import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -34,6 +33,7 @@ import androidx.lifecycle.compose.ExperimentalLifecycleComposeApi
 import com.google.accompanist.pager.ExperimentalPagerApi
 import com.pranay.jetkite.components.JetKiteTextView
 import com.pranay.jetkite.components.extension.LightDarkPreviews
+import com.pranay.jetkite.components.extension.clickableWithRipple
 import com.pranay.jetkite.components.icons.JetKiteIcons
 import com.pranay.jetkite.dashboard.R
 import com.pranay.jetkite.designsystem.JetKiteTheme
@@ -42,7 +42,6 @@ import com.pranay.jetkite.designsystem.colorSearchTextDark
 import com.pranay.jetkite.designsystem.colorSearchTextLight
 import com.pranay.jetkite.designsystem.color_white
 import com.pranay.jetkite.designsystem.spacing
-import kotlinx.coroutines.CoroutineScope
 
 @OptIn(
     ExperimentalLifecycleComposeApi::class,
@@ -53,8 +52,12 @@ import kotlinx.coroutines.CoroutineScope
 fun WatchListSearch(
     onFilterClick: () -> Unit,
     modifier: Modifier = Modifier,
-    coroutineScope: CoroutineScope = rememberCoroutineScope(),
+    placeholderText: String? = null,
+    showFilter: Boolean = false,
     totalWatchListItem: String? = null,
+    showNewBasket: Boolean = false,
+    onNewBasketClick: () -> Unit = {},
+    textNewBasketLabel: String = stringResource(id = R.string.str_new_basket),
     backgroundColor: Color = if (isSystemInDarkTheme()) colorSearchBackground else color_white,
     textColor: Color = if (isSystemInDarkTheme()) colorSearchTextDark else colorSearchTextLight,
     onValueChange: (TextFieldValue) -> Unit
@@ -69,12 +72,20 @@ fun WatchListSearch(
         Row(
             modifier = Modifier
                 .fillMaxWidth()
-                .height(TextFieldDefaults.MinHeight),
+                .height(TextFieldDefaults.MinHeight).padding(end = MaterialTheme.spacing.extraSmall),
             verticalAlignment = Alignment.CenterVertically,
             horizontalArrangement = Arrangement.spacedBy(MaterialTheme.spacing.small)
         ) {
             OutlinedTextField(
                 value = searchValue,
+                placeholder = {
+                    if (placeholderText != null) {
+                        JetKiteTextView(
+                            text = placeholderText,
+                            style = MaterialTheme.typography.bodyMedium.copy(color = textColor.copy(0.5f))
+                        )
+                    }
+                },
                 onValueChange = {
                     searchValue = it
                     onValueChange.invoke(it)
@@ -99,22 +110,37 @@ fun WatchListSearch(
                     containerColor = Color.Transparent,
                     unfocusedTrailingIconColor = MaterialTheme.colorScheme.outline,
                     focusedTrailingIconColor = MaterialTheme.colorScheme.onPrimaryContainer
-                )
+                ),
+                singleLine = true
             )
             totalWatchListItem?.let {
-                JetKiteTextView(text = it)
+                JetKiteTextView(text = it, style = MaterialTheme.typography.bodyMedium.copy(color = textColor))
             }
-            Divider(
-                modifier = Modifier
-                    .fillMaxHeight()
-                    .padding(vertical = MaterialTheme.spacing.dp12)
-                    .width(MaterialTheme.spacing.dp1)
-            )
-            IconButton(onClick = onFilterClick) {
-                Icon(
-                    imageVector = Icons.Default.List,
-                    contentDescription = stringResource(id = R.string.str_search),
-                    tint = textColor
+            if (showNewBasket or showFilter) {
+                Divider(
+                    modifier = Modifier
+                        .fillMaxHeight()
+                        .padding(top = MaterialTheme.spacing.dp12, bottom = MaterialTheme.spacing.dp12, start = MaterialTheme.spacing.small)
+                        .width(MaterialTheme.spacing.dp1),
+                    color = textColor.copy(alpha = 0.2f)
+                )
+            }
+            if (showFilter) {
+                IconButton(onClick = onFilterClick) {
+                    Icon(
+                        imageVector = Icons.Default.List,
+                        contentDescription = stringResource(id = R.string.str_search),
+                        tint = textColor
+                    )
+                }
+            }
+            if (showNewBasket) {
+                JetKiteTextView(
+                    text = textNewBasketLabel,
+                    style = MaterialTheme.typography.bodyMedium.copy(color = MaterialTheme.colorScheme.primary),
+                    modifier = Modifier.clickableWithRipple {
+                        onNewBasketClick()
+                    }.padding(MaterialTheme.spacing.extraSmall)
                 )
             }
         }
