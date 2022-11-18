@@ -28,4 +28,13 @@
     <string name="str_overview">Overview</string>
     <string name="str_new_basket">+ New basket</string>
     <string name="str_search_add">Search &amp; add</string>
+    <string name="str_search_order">Search eg:infy, reliance</string>
+
+    <!--Order screen-->
+    <string name="str_open">Open</string>
+    <string name="str_executed">Executed</string>
+    <string name="str_gtt">GTT</string>
+    <string name="str_no_executed_order">No executed orders</string>
+    <string name="str_no_executed_order_subtitle">Place an order from your watchlist</string>
+    <string name="str_no_open_order">No open orders</string>
 </resources>

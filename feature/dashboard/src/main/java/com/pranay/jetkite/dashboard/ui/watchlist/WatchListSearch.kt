@@ -50,8 +50,8 @@ import com.pranay.jetkite.designsystem.spacing
 )
 @Composable
 fun WatchListSearch(
-    onFilterClick: () -> Unit,
     modifier: Modifier = Modifier,
+    onFilterClick: () -> Unit = {},
     placeholderText: String? = null,
     showFilter: Boolean = false,
     totalWatchListItem: String? = null,

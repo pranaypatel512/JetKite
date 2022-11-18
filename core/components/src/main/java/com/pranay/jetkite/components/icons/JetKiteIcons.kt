@@ -26,6 +26,8 @@ object JetKiteIcons {
     val ProfileBorder = R.drawable.ic_nav_profile_border
     val Profile = R.drawable.ic_nav_profile
     val Search = Icons.Default.Search
+    val OrderPlaceholder = R.drawable.orders
+    val PortfolioPlaceholder = R.drawable.portfolio
 }
 
 /**
