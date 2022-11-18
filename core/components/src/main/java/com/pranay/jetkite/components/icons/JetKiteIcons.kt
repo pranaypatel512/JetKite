@@ -1,6 +1,8 @@
 package com.pranay.jetkite.components.icons
 
 import androidx.annotation.DrawableRes
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Search
 import androidx.compose.ui.graphics.vector.ImageVector
 import com.pranay.jetkite.components.R
 
@@ -23,6 +25,7 @@ object JetKiteIcons {
     val Tools = R.drawable.ic_nav_settings
     val ProfileBorder = R.drawable.ic_nav_profile_border
     val Profile = R.drawable.ic_nav_profile
+    val Search = Icons.Default.Search
 }
 
 /**

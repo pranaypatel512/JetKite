@@ -37,6 +37,7 @@ import com.google.accompanist.pager.ExperimentalPagerApi
 import com.google.accompanist.pager.HorizontalPager
 import com.google.accompanist.pager.PagerState
 import com.google.accompanist.pager.VerticalPager
+import com.pranay.jetkite.components.extension.topSectionBackgroundColor
 
 /**
  * Now in Android tab. Wraps Material 3 [Tab] and shifts text label down.
@@ -91,13 +92,14 @@ fun JetKiteTabRow(
     selectedTabIndex: Int,
     pagerState: PagerState,
     modifier: Modifier = Modifier,
+    containerColor: Color = topSectionBackgroundColor(),
     tabs: @Composable () -> Unit
 ) {
     ScrollableTabRow(
         selectedTabIndex = selectedTabIndex,
         modifier = modifier,
         edgePadding = 0.dp,
-        containerColor = Color.Transparent,
+        containerColor = containerColor,
         indicator = { tabPositions ->
             TabRowDefaults.Indicator(
                 modifier = Modifier.pagerTabIndicatorOffset(pagerState, tabPositions),

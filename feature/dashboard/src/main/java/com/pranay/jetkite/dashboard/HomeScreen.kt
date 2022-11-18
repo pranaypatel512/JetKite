@@ -4,6 +4,7 @@ import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.interaction.MutableInteractionSource
+import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -24,6 +25,7 @@ import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
+import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -35,16 +37,20 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.zIndex
 import androidx.navigation.NavDestination
 import androidx.navigation.NavDestination.Companion.hierarchy
+import com.google.accompanist.systemuicontroller.rememberSystemUiController
 import com.pranay.jetkite.components.JetKiteNavigationBar
 import com.pranay.jetkite.components.JetKiteNavigationBarItem
 import com.pranay.jetkite.components.JetKiteTextView
 import com.pranay.jetkite.components.JetKiteTopAppBar
 import com.pranay.jetkite.components.extension.LightDarkPreviews
+import com.pranay.jetkite.components.extension.topSectionBackgroundColor
 import com.pranay.jetkite.components.icons.Icon
 import com.pranay.jetkite.dashboard.navigation.TopLevelDestination
 import com.pranay.jetkite.dashboard.navigation.TopLevelDestinationList
 import com.pranay.jetkite.dashboard.ui.JetKiteHomeNavHost
 import com.pranay.jetkite.designsystem.JetKiteTheme
+import com.pranay.jetkite.designsystem.colorTopSectionBackgroundDark
+import com.pranay.jetkite.designsystem.colorTopSectionBackgroundLight
 import com.pranay.jetkite.designsystem.spacing
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -58,12 +64,14 @@ fun HomeScreen(
     val marketWatchVisibility = remember {
         mutableStateOf(false)
     }
+    val systemUiController = rememberSystemUiController()
+    systemUiController.setSystemBarsColor(if (isSystemInDarkTheme()) colorTopSectionBackgroundDark else colorTopSectionBackgroundLight)
     Column(modifier = Modifier.fillMaxSize().background(MaterialTheme.colorScheme.surface)) {
         AnimatedVisibility(visible = marketWatchVisibility.value) {
             Box(
                 modifier = Modifier.fillMaxWidth()
                     .height(MaterialTheme.spacing.dp100)
-                    .background(MaterialTheme.colorScheme.surface).padding(start = MaterialTheme.spacing.dp12),
+                    .background(topSectionBackgroundColor()).padding(start = MaterialTheme.spacing.dp12),
                 contentAlignment = Alignment.Center
             ) {
                 IconButton(onClick = {
@@ -103,6 +111,9 @@ fun HomeScreen(
                         titleRes = topBarTitle.value,
                         actionIcon = com.pranay.jetkite.components.R.drawable.baseline_keyboard_arrow_down_24,
                         actionIconContentDescription = stringResource(id = R.string.market_watch),
+                        colors = TopAppBarDefaults.centerAlignedTopAppBarColors(
+                            containerColor = topSectionBackgroundColor()
+                        ),
                         onActionClick = {
                             marketWatchVisibility.value = !marketWatchVisibility.value
                         }

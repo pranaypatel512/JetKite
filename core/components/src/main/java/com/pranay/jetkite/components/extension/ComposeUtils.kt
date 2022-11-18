@@ -4,12 +4,16 @@ import android.annotation.SuppressLint
 import androidx.compose.foundation.Indication
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.interaction.MutableInteractionSource
+import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.systemBarsPadding
 import androidx.compose.material.ripple.rememberRipple
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
+import com.pranay.jetkite.designsystem.colorTopSectionBackgroundDark
+import com.pranay.jetkite.designsystem.colorTopSectionBackgroundLight
 
 @Composable
 fun SystemBarsPaddingSpacer(modifier: Modifier = Modifier) {
@@ -29,3 +33,8 @@ fun Modifier.clickableWithRipple( // ktlint-disable modifier-composable-check
     onClick = onClick
 )
 /* ktlint-enable twitter-compose:modifier-composable-check */
+
+@Composable
+fun topSectionBackgroundColor(): Color {
+    return if (isSystemInDarkTheme()) colorTopSectionBackgroundDark else colorTopSectionBackgroundLight
+}
