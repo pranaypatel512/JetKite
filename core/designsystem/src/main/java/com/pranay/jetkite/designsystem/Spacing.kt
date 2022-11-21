@@ -26,6 +26,8 @@ class Spacing internal constructor(
     val dp20: Dp = 20.dp,
     val dp1: Dp = 1.dp,
     val dp12: Dp = 12.dp,
+    val dp10: Dp = 10.dp,
+    val dp6: Dp = 6.dp,
     val dp42: Dp = 42.dp
 ) {
     override fun equals(other: Any?): Boolean {

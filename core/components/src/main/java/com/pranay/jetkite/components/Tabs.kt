@@ -17,6 +17,7 @@
 package com.pranay.jetkite.components
 
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.ProvideTextStyle
@@ -26,6 +27,7 @@ import androidx.compose.material3.TabPosition
 import androidx.compose.material3.TabRow
 import androidx.compose.material3.TabRowDefaults
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.layout
@@ -56,6 +58,7 @@ fun JetKiteTab(
     onClick: () -> Unit,
     modifier: Modifier = Modifier,
     enabled: Boolean = true,
+    counts: @Composable () -> Unit = { },
     text: @Composable () -> Unit
 ) {
     Tab(
@@ -66,15 +69,23 @@ fun JetKiteTab(
         selectedContentColor = MaterialTheme.colorScheme.primary,
         unselectedContentColor = MaterialTheme.colorScheme.onSurfaceVariant,
         text = {
-            val style = MaterialTheme.typography.labelLarge.copy(textAlign = TextAlign.Center)
-            ProvideTextStyle(
-                value = style,
-                content = {
-                    Box(modifier = Modifier.padding(MaterialTheme.spacing.small)) {
-                        text()
+            Row(verticalAlignment = Alignment.CenterVertically) {
+                val style = MaterialTheme.typography.labelLarge.copy(textAlign = TextAlign.Center)
+                ProvideTextStyle(
+                    value = style,
+                    content = {
+                        Box(
+                            modifier = Modifier.padding(
+                                horizontal = MaterialTheme.spacing.small,
+                                vertical = MaterialTheme.spacing.dp12
+                            )
+                        ) {
+                            text()
+                        }
                     }
-                }
-            )
+                )
+                counts()
+            }
         }
     )
 }

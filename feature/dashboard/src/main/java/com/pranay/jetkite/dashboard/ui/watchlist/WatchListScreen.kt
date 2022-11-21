@@ -6,7 +6,6 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.rememberCoroutineScope
-import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.hilt.navigation.compose.hiltViewModel
@@ -44,9 +43,8 @@ fun WatchListScreen(
                                 pagerState.animateScrollToPage(index)
                             }
                             viewModel.switchTab(index)
-                        },
-                        text = { Text(text = stringResource(id = titleId)) }
-                    )
+                        }
+                    ) { Text(text = stringResource(id = titleId)) }
                 }
             }
             HorizontalPager(count = tabState.titles.size, state = pagerState) { tabIndex ->
@@ -71,9 +69,8 @@ private fun WatchListContent(
                     selected = pagerState.currentPage == index,
                     onClick = {
                         // switchTab(index)
-                    },
-                    text = { Text(text = stringResource(id = titleId)) }
-                )
+                    }
+                ) { Text(text = stringResource(id = titleId)) }
             }
         }
         HorizontalPager(count = tabState.titles.size, state = pagerState) { tabIndex ->

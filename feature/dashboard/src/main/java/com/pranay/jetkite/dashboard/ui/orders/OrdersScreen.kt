@@ -46,9 +46,8 @@ fun OrdersScreen(
                                 pagerState.animateScrollToPage(index)
                             }
                             viewModel.switchTab(index)
-                        },
-                        text = { Text(text = stringResource(id = titleId)) }
-                    )
+                        }
+                    ) { Text(text = stringResource(id = titleId)) }
                 }
             }
             HorizontalPager(
