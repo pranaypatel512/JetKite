@@ -61,7 +61,8 @@ fun SplashScreen(
             LinearProgressIndicator(progress = animatedProgress)
             LaunchedEffect(progress) {
                 if (progress <= 1f) {
-                    delay(350)
+//                    delay(350)
+                    delay(100)
                     progress += 0.1f
                 } else {
                     onLoadingCompleted()

@@ -35,7 +35,7 @@ fun WatchListScreen(
     val pagerState = rememberPagerState(tabState.currentIndex)
     Surface {
         Column(modifier) {
-            JetKiteTabRow(selectedTabIndex = pagerState.currentPage, pagerState = pagerState) {
+            JetKiteTabRow(selectedTabIndex = pagerState.currentPage, pagerState = pagerState, scrollable = true) {
                 tabState.titles.forEachIndexed { index, titleId ->
                     JetKiteTab(
                         selected = pagerState.currentPage == index,

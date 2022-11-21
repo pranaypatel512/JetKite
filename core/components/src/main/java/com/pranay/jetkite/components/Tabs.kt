@@ -38,6 +38,7 @@ import com.google.accompanist.pager.HorizontalPager
 import com.google.accompanist.pager.PagerState
 import com.google.accompanist.pager.VerticalPager
 import com.pranay.jetkite.components.extension.topSectionBackgroundColor
+import com.pranay.jetkite.designsystem.spacing
 
 /**
  * Now in Android tab. Wraps Material 3 [Tab] and shifts text label down.
@@ -65,11 +66,11 @@ fun JetKiteTab(
         selectedContentColor = MaterialTheme.colorScheme.primary,
         unselectedContentColor = MaterialTheme.colorScheme.onSurfaceVariant,
         text = {
-            val style = MaterialTheme.typography.labelMedium.copy(textAlign = TextAlign.Center)
+            val style = MaterialTheme.typography.labelLarge.copy(textAlign = TextAlign.Center)
             ProvideTextStyle(
                 value = style,
                 content = {
-                    Box(modifier = Modifier.padding(top = NiaTabDefaults.TabTopPadding)) {
+                    Box(modifier = Modifier.padding(MaterialTheme.spacing.small)) {
                         text()
                     }
                 }
@@ -92,24 +93,42 @@ fun JetKiteTabRow(
     selectedTabIndex: Int,
     pagerState: PagerState,
     modifier: Modifier = Modifier,
+    scrollable: Boolean = false,
     containerColor: Color = topSectionBackgroundColor(),
     tabs: @Composable () -> Unit
 ) {
-    ScrollableTabRow(
-        selectedTabIndex = selectedTabIndex,
-        modifier = modifier,
-        edgePadding = 0.dp,
-        containerColor = containerColor,
-        indicator = { tabPositions ->
-            TabRowDefaults.Indicator(
-                modifier = Modifier.pagerTabIndicatorOffset(pagerState, tabPositions),
-                height = 2.dp,
-                color = MaterialTheme.colorScheme.primary
-            )
-        },
-        tabs = tabs,
-        divider = {}
-    )
+    if (scrollable) {
+        ScrollableTabRow(
+            selectedTabIndex = selectedTabIndex,
+            modifier = modifier,
+            edgePadding = 0.dp,
+            containerColor = containerColor,
+            indicator = { tabPositions ->
+                TabRowDefaults.Indicator(
+                    modifier = Modifier.pagerTabIndicatorOffset(pagerState, tabPositions).padding(horizontal = MaterialTheme.spacing.medium),
+                    height = 2.dp,
+                    color = MaterialTheme.colorScheme.primary
+                )
+            },
+            tabs = tabs,
+            divider = {}
+        )
+    } else {
+        TabRow(
+            selectedTabIndex = selectedTabIndex,
+            modifier = modifier,
+            containerColor = containerColor,
+            indicator = { tabPositions ->
+                TabRowDefaults.Indicator(
+                    modifier = Modifier.pagerTabIndicatorOffset(pagerState, tabPositions).padding(horizontal = MaterialTheme.spacing.medium),
+                    height = 2.dp,
+                    color = MaterialTheme.colorScheme.primary
+                )
+            },
+            tabs = tabs,
+            divider = {}
+        )
+    }
 }
 
 object NiaTabDefaults {
