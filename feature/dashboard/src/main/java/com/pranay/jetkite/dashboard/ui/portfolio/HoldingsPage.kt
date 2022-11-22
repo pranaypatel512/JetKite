@@ -24,9 +24,13 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.zIndex
 import com.pranay.jetkite.components.JetKiteTextView
+import com.pranay.jetkite.components.JetKiteTextViewPnL
 import com.pranay.jetkite.components.extension.LightDarkPreviews
 import com.pranay.jetkite.components.extension.topSectionBackgroundColor
+import com.pranay.jetkite.components.icons.Icon
+import com.pranay.jetkite.components.icons.JetKiteIcons
 import com.pranay.jetkite.dashboard.R
+import com.pranay.jetkite.dashboard.ui.orders.OrderPlaceholder
 import com.pranay.jetkite.designsystem.JetKiteTheme
 import com.pranay.jetkite.designsystem.colorGreen
 import com.pranay.jetkite.designsystem.colorRed
@@ -44,6 +48,8 @@ fun HoldingsPage(
     textColor: Color = if (isSystemInDarkTheme()) colorSearchTextDark else colorSearchTextLight,
     backgroundColor: Color = if (isSystemInDarkTheme()) colorSearchBackground else color_white
 ) {
+    val showHoldings = remember { mutableStateOf(false) }
+
     Box(
         modifier = modifier.fillMaxHeight()
     ) {
@@ -81,6 +87,14 @@ fun HoldingsPage(
                 Divider(Modifier.fillMaxWidth().fillMaxHeight(0.165f).align(Alignment.TopCenter), color = topSectionBackgroundColor())
             }
         }
+        if (!showHoldings.value) {
+            OrderPlaceholder(
+                placeholderTitle = stringResource(id = R.string.str_no_holdings_order),
+                placeholderSubTitle = stringResource(id = R.string.str_no_holdings_info),
+                placeholderIcon = Icon.DrawableResourceIcon(JetKiteIcons.PortfolioPlaceholder),
+                modifier = Modifier.align(Alignment.BottomCenter)
+            )
+        }
     }
 }
 
@@ -114,9 +128,10 @@ fun SectionPnL(textLabel: String, textValue: String, modifier: Modifier = Modifi
                 text = textLabel,
                 style = MaterialTheme.typography.bodyLarge.copy(textAlign = TextAlign.Start, color = colorOfPnL.value)
             )
-            JetKiteTextView(
+            JetKiteTextViewPnL(
                 text = textValue,
-                style = MaterialTheme.typography.bodySmall.copy(textAlign = TextAlign.Start, color = colorOfPnL.value),
+                color = colorOfPnL.value,
+                style = MaterialTheme.typography.bodySmall.copy(textAlign = TextAlign.Start),
                 modifier = Modifier.padding(start = MaterialTheme.spacing.extraSmall)
             )
         }

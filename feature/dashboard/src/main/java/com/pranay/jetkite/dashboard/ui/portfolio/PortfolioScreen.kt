@@ -100,6 +100,13 @@ fun PortfolioScreen(
                                 .aspectRatio(1f)
                         )
                     }
+                    1 -> {
+                        PositionsPage(
+                            currentTab = tabIndex,
+                            modifier = Modifier.fillMaxWidth()
+                                .aspectRatio(1f)
+                        )
+                    }
                 }
             }
         }
