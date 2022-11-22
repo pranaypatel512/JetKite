@@ -65,6 +65,9 @@ val colorSearchTextDark = Color(0xFFB0B3B6)
 val colorSearchTextLight = Color(0xFFB0B8BE)
 val colorTopSectionBackgroundDark = Color(0xFF1C2C3C)
 val colorTopSectionBackgroundLight = Color(0xFFECECEC) // AAB5C1
+val colorGreen = Color(0xFF4D9B59)
+val colorRed = Color(0xFFE87477)
+val colorBackgroundUnSelected = Color(0XFF49545C)
 
 /* Theme 2
 val md_theme_light_primary = Color(0xFF005AC1)

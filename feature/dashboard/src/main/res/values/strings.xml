@@ -37,4 +37,9 @@
     <string name="str_no_executed_order">No executed orders</string>
     <string name="str_no_executed_order_subtitle">Place an order from your watchlist</string>
     <string name="str_no_open_order">No open orders</string>
+
+    <!--Portfolio screen-->
+    <string name="str_holdings">Holdings</string>
+    <string name="str_positions">Positions</string>
+    <string name="str_pnl">P&amp;L</string>
 </resources>
