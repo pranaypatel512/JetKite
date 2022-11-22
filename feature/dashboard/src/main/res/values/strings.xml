@@ -42,4 +42,7 @@
     <string name="str_holdings">Holdings</string>
     <string name="str_positions">Positions</string>
     <string name="str_pnl">P&amp;L</string>
+    <string name="str_no_positions_order">No positions</string>
+    <string name="str_no_holdings_order">No holdings</string>
+    <string name="str_no_holdings_info">Buy equities from your watchlist</string>
 </resources>

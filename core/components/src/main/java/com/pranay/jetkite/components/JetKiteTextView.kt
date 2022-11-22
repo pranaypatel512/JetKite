@@ -21,6 +21,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.TextUnit
 import com.pranay.jetkite.components.extension.clickableWithRipple
 import com.pranay.jetkite.designsystem.JetKiteTheme
+import com.pranay.jetkite.designsystem.colorGreen
 
 @Composable
 fun JetKiteTextView(
@@ -71,6 +72,24 @@ fun JetKiteTextViewPrimary(
             onTextViewClick()
         },
         style = MaterialTheme.typography.bodyMedium.copy(color = MaterialTheme.colorScheme.primary)
+    )
+}
+
+@Composable
+fun JetKiteTextViewPnL(
+    text: String,
+    modifier: Modifier = Modifier,
+    color: Color = colorGreen,
+    style: TextStyle = LocalTextStyle.current,
+    onTextViewClick: () -> Unit = {}
+) {
+    JetKiteTextView(
+        text = text,
+        textColor = color,
+        modifier = modifier.clickableWithRipple {
+            onTextViewClick()
+        },
+        style = style
     )
 }
 
