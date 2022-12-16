@@ -1,5 +1,5 @@
 plugins {
-    id(BuildPlugins.KOTLINTER) version BuildPlugins.KOTLINTER_VERSION apply true
+    id("org.jmailen.kotlinter") version "3.12.0" apply true
 }
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
 buildscript {
@@ -12,7 +12,7 @@ buildscript {
         classpath(BuildPlugins.DAGGER_HILT_PLUGIN)
         classpath(BuildPlugins.KOTLIN_GRADLE_PLUGIN)
         classpath(BuildPlugins.KTLINT_GRADLE_PLUGIN)
-        classpath(BuildPlugins.TWITTER_COMPOSE_RULES)
+        classpath("com.twitter.compose.rules:ktlint:0.0.22")
     }
 }
 subprojects {
