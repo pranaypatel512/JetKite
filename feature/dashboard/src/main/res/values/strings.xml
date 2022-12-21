@@ -26,7 +26,6 @@
     <string name="str_close">Close</string>
     <string name="str_search">Search</string>
     <string name="str_overview">Overview</string>
-    <string name="str_new_basket">+ New basket</string>
     <string name="str_search_add">Search &amp; add</string>
     <string name="str_search_order">Search eg:infy, reliance</string>
 
@@ -45,4 +44,15 @@
     <string name="str_no_positions_order">No positions</string>
     <string name="str_no_holdings_order">No holdings</string>
     <string name="str_no_holdings_info">Buy equities from your watchlist</string>
+
+    <!--Tools screen-->
+    <string name="str_basket">Basket</string>
+    <string name="str_sip">SIPs</string>
+    <string name="str_alerts">Alerts</string>
+    <string name="search_basket">Search basket name</string>
+    <string name="search_sip">Search SIP</string>
+    <string name="search_alerts">Search alerts</string>
+    <string name="str_new_basket">+ New basket</string>
+    <string name="new_sip">+ New SIP</string>
+    <string name="new_alert">+ New alert</string>
 </resources>
