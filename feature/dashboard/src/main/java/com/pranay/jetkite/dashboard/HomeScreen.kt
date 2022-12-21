@@ -60,7 +60,7 @@ fun HomeScreen(
     appState: HomeNavigationAppState = rememberHomeNavigationState(),
     onNavigationBackClick: () -> Unit = {}
 ) {
-    val topBarTitle = remember { mutableStateOf(R.string.market_watch) }
+    var topBarTitle = remember { mutableStateOf(R.string.market_watch) }
     val marketWatchVisibility = remember {
         mutableStateOf(false)
     }
@@ -102,7 +102,10 @@ fun HomeScreen(
                 bottomBar = {
                     JetKiteBottomBar(
                         destinations = appState.topLevelDestinations,
-                        onNavigateToDestination = appState::navigate,
+                        onNavigateToDestination = {
+                            topBarTitle.value = updateTitle(it)
+                            appState.navigate(it)
+                        },
                         currentDestination = appState.currentDestination
                     )
                 },
@@ -147,6 +150,26 @@ fun HomeScreen(
                         }
                 )
             }
+        }
+    }
+}
+
+fun updateTitle(destination: TopLevelDestination): Int {
+    return when (destination) {
+        TopLevelDestination.WATCH_LIST -> {
+            R.string.market_watch
+        }
+        TopLevelDestination.ORDERS -> {
+            R.string.orders
+        }
+        TopLevelDestination.PORTFOLIO -> {
+            R.string.portfolio
+        }
+        TopLevelDestination.TOOLS -> {
+            R.string.tools
+        }
+        TopLevelDestination.PROFILE -> {
+            R.string.profile
         }
     }
 }
