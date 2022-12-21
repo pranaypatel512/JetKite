@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="welcome_to_jetkite">Welcome to JetKite</string>
+    <string name="string_login">Login</string>
+    <string name="string_loginid">Login ID</string>
+    <string name="string_password">Password</string>
+    <string name="forgot_your_password_or_userid">Forgot your password or UserId?</string>
+    <string name="switch_account">Switch account</string>
+    <string name="enter_sms_email_otp">Enter SMS/email OTP</string>
+    <string name="enter_otp_info">Enter the OTP sent to your mobile &amp; email</string>
+    <string name="person_icon">Person Icon</string>
+    <string name="watchlist">Watchlist</string>
+    <string name="orders">Orders</string>
+    <string name="portfolio">Portfolio</string>
+    <string name="tools">Tools</string>
+    <string name="profile">Profile</string>
+    <string name="mw1">MW1</string>
+    <string name="mw2">MW2</string>
+    <string name="mw3">MW3</string>
+    <string name="mw4">MW4</string>
+    <string name="mw5">MW5</string>
+    <string name="mw6">MW6</string>
+    <string name="mw7">MW7</string>
+    <string name="mw8">MW8</string>
+    <string name="market_watch">Market Watch</string>
+    <string name="str_close">Close</string>
+    <string name="str_search">Search</string>
+    <string name="str_overview">Overview</string>
+    <string name="str_search_add">Search &amp; add</string>
+    <string name="str_search_order">Search eg:infy, reliance</string>
+
+    <!--Order screen-->
+    <string name="str_open">Open</string>
+    <string name="str_executed">Executed</string>
+    <string name="str_gtt">GTT</string>
+    <string name="str_no_executed_order">No executed orders</string>
+    <string name="str_no_executed_order_subtitle">Place an order from your watchlist</string>
+    <string name="str_no_open_order">No open orders</string>
+
+    <!--Portfolio screen-->
+    <string name="str_holdings">Holdings</string>
+    <string name="str_positions">Positions</string>
+    <string name="str_pnl">P&amp;L</string>
+    <string name="str_no_positions_order">No positions</string>
+    <string name="str_no_holdings_order">No holdings</string>
+    <string name="str_no_holdings_info">Buy equities from your watchlist</string>
+
+    <!--Tools screen-->
+    <string name="str_basket">Basket</string>
+    <string name="str_sip">SIPs</string>
+    <string name="str_alerts">Alerts</string>
+    <string name="search_basket">Search basket name</string>
+    <string name="search_sip">Search SIP</string>
+    <string name="search_alerts">Search alerts</string>
+    <string name="str_new_basket">+ New basket</string>
+    <string name="new_sip">+ New SIP</string>
+    <string name="new_alert">+ New alert</string>
+</resources>

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="back">Back</string>
+    <string name="app_logo">AppLogo</string>
+    <string name="login_to_kite">Login to App</string>
+    <string name="open_new_account">Open new account</string>
+</resources>
