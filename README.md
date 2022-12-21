@@ -1,4 +1,4 @@
-![](jetkiteclone.png)
+![](https://user-images.githubusercontent.com/10808436/208911017-2d0b5437-53a7-4225-9fb5-dc430444ce26.svg)
 <div id="top"></div>
 
 # JetKite
@@ -139,5 +139,3 @@ See [Contributing Guidelines](CONTRIBUTING.md).
 ### License
 
 - See [License](LICENSE)
-
-
