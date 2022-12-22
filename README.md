@@ -2,7 +2,7 @@
 <div id="top"></div>
 
 # JetKite
-<p align="left"> 🪁 JetKite - Zerodha kite clone Android app built with ❤ using Jetpack Compose. </p>
+<p align="left"> 🪁 JetKite - Leaning purpose Zerodha kite clone Android app built with ❤ using Jetpack Compose. </p>
 
 <p align="left">
     <a href = "https://developer.android.com/jetpack/androidx/versions/all-channel">
