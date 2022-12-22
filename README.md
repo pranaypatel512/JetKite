@@ -25,18 +25,18 @@
     </a>
 </p>
 
-### 🏁 The purpose of this repository:
+## 🏁 The purpose of this repository:
 
 - Build a functional Android app to demonstrate Zerodha Kite app with Kotlin and Jetpack Compose.
 - Follows [Android design guide](https://developer.android.com/topic/architecture/intro) and development best practices with Jetpack Compose.
 - Explore the possibilities of creating complex ui and ux of a Zerodha Kite app flow using Compose.
 - Explore Animation possiblity to implement it and leanr from that
 
-### 💡 App 
+## 💡 App 
 - Creating multi module app by following [Guide to Android app modularization](https://developer.android.com/topic/modularization)
 - Following app architecture guide to seperate data and UI layer. See [Guide to app architecture](https://developer.android.com/topic/architecture) 
 
-### 🛠 Built with ❤️ using Kotlin
+## 🛠 Built with ❤️ using Kotlin
 
 | Tools | Link |
 |     :---      |          :---: |
@@ -46,6 +46,14 @@
 | 🌊 Coroutines | [Kotlin Coroutines](https://developer.android.com/kotlin/coroutines) |
 | 🧭 Navigating with Compose | [Navigating with Compose](https://developer.android.com/jetpack/compose/navigation) |
 | 🎨 Accompanist | [Accompanist](https://google.github.io/accompanist) |
+
+## Run project
+> **Warning**
+> On first clone, please do `clean` you project so pre-commit githook will setup and code will be validate with kotliner tasks.
+ 
+
+## Lint ✅
+- This project uses [***Twitter Jetpack Compose Rules***](https://twitter.github.io/compose-rules/) Using [***kotlinter-gradle***](https://github.com/jeremymailen/kotlinter-gradle) to validate jetpack compose code using klint engine. 
 
 ### 📸 Screenshots:
 
