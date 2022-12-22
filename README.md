@@ -55,7 +55,7 @@
 ## Lint ✅
 - This project uses [***Twitter Jetpack Compose Rules***](https://twitter.github.io/compose-rules/) Using [***kotlinter-gradle***](https://github.com/jeremymailen/kotlinter-gradle) to validate jetpack compose code using klint engine. 
 
-### 📸 Screenshots:
+## 📸 Screenshots:
 
 
 <table style="width:100%">
@@ -114,18 +114,18 @@
   </tr>
 </table>
 
-### 🎥 Video Demo:
+## 🎥 Video Demo:
 
 |  JetKite Demo video  | 
 | ------------- | 
 | <video src="https://user-images.githubusercontent.com/10808436/208895025-42957f00-c827-4af5-9cf4-8e414a22f1eb.mp4" width=250px /> | 
 
 
-### 💬 Want to discuss?
+## 💬 Want to discuss?
 
 Have any questions, doubts or want to present your opinions, views? You're always welcome. You can [start discussions](https://github.com/pranaypatel512/JetKite/discussions).
 
-### 🤝 Contributors
+## 🤝 Contributors
 
 See our rockstar contributors :smile:
 
@@ -134,16 +134,17 @@ See our rockstar contributors :smile:
 - If you want to contribute to this library, you're always welcome!
 See [Contributing Guidelines](CONTRIBUTING.md).
 
-### :envelope: Get in touch!
+## :envelope: Get in touch!
 
 [![Medium](https://img.shields.io/badge/-medium-gray?style=for-the-badge&logo=medium)](https://pranaypatel.medium.com/)
 [![Twitter](https://img.shields.io/badge/-twitter-gray?style=for-the-badge&logo=twitter)](https://twitter.com/pranaypatel_)
 [![LinkedIn](https://img.shields.io/badge/-linkedin-gray?style=for-the-badge&logo=linkedin)](https://www.linkedin.com/in/pranaypatel512/)
 
 
-### 🫶 Find this project useful ? ❤️
+## 🫶 Find this project useful ? ❤️
 
 - Support it by clicking the ⭐️ button on the upper right of this page. ✌️
-### License
+
+## License
 
 - See [License](LICENSE)
