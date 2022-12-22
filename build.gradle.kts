@@ -55,3 +55,8 @@ kotlinter {
     disabledRules = emptyArray()
     // disabledRules = arrayOf("experimental:argument-list-wrapping", "no-wildcard-imports")
 }
+
+afterEvaluate {
+    // We install the hook at the first occasion
+    tasks["clean"].dependsOn(tasks.getByName("installGitHook"))
+}
