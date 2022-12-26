@@ -11,6 +11,8 @@ import androidx.compose.material3.Divider
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
@@ -18,7 +20,10 @@ import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.zIndex
 import com.pranay.jetkite.components.extension.LightDarkPreviews
 import com.pranay.jetkite.components.extension.topSectionBackgroundColor
+import com.pranay.jetkite.components.icons.Icon
+import com.pranay.jetkite.components.icons.JetKiteIcons
 import com.pranay.jetkite.dashboard.R
+import com.pranay.jetkite.dashboard.ui.orders.OrderPlaceholder
 import com.pranay.jetkite.dashboard.ui.watchlist.WatchListSearch
 import com.pranay.jetkite.designsystem.JetKiteTheme
 import com.pranay.jetkite.designsystem.spacing
@@ -26,47 +31,58 @@ import com.pranay.jetkite.designsystem.spacing
 @Composable
 fun ToolsPage(
     currentTab: Int,
-    textNewBasketLabel: String,
-    placeholderText: String,
+    pageInfo: ToolsPageInfo,
     onValueChange: (TextFieldValue) -> Unit,
     modifier: Modifier = Modifier,
     onNewItemClick: () -> Unit
 ) {
+    val showHoldings = remember { mutableStateOf(false) }
     Surface {
-        Column(
-            modifier = modifier.fillMaxSize(),
-            horizontalAlignment = Alignment.CenterHorizontally
+        Box(
+            modifier = modifier.fillMaxSize()
         ) {
-            val boxHeight = MaterialTheme.spacing.dp100
-            Box(
-                contentAlignment = Alignment.Center,
-                modifier = Modifier
-                    .height(boxHeight)
-                    .background(
-                        MaterialTheme.colorScheme.surface
-                    )
+            Column(
+                horizontalAlignment = Alignment.CenterHorizontally
             ) {
-                Divider(
-                    Modifier
-                        .fillMaxWidth()
-                        .height(boxHeight / 2)
-                        .align(Alignment.TopCenter),
-                    color = topSectionBackgroundColor()
-                )
-                WatchListSearch(
-                    onValueChange = onValueChange,
-                    onNewBasketClick = onNewItemClick,
+                val boxHeight = MaterialTheme.spacing.dp100
+                Box(
+                    contentAlignment = Alignment.Center,
                     modifier = Modifier
-                        .fillMaxWidth()
-                        .zIndex(10f)
-                        .padding(horizontal = MaterialTheme.spacing.medium)
-                        .align(
-                            Alignment.Center
-                        ),
-                    showFilter = false,
-                    showNewBasket = true,
-                    textNewBasketLabel = textNewBasketLabel,
-                    placeholderText = placeholderText
+                        .height(boxHeight)
+                        .background(
+                            MaterialTheme.colorScheme.surface
+                        )
+                ) {
+                    Divider(
+                        Modifier
+                            .fillMaxWidth()
+                            .height(boxHeight / 2)
+                            .align(Alignment.TopCenter),
+                        color = topSectionBackgroundColor()
+                    )
+                    WatchListSearch(
+                        onValueChange = onValueChange,
+                        onNewBasketClick = onNewItemClick,
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .zIndex(10f)
+                            .padding(horizontal = MaterialTheme.spacing.medium)
+                            .align(
+                                Alignment.Center
+                            ),
+                        showFilter = false,
+                        showNewBasket = true,
+                        textNewBasketLabel = pageInfo.newOptionText,
+                        placeholderText = pageInfo.searchPlaceHolder
+                    )
+                }
+            }
+            if (!showHoldings.value) {
+                OrderPlaceholder(
+                    placeholderTitle = pageInfo.placeHolderTitle,
+                    placeholderSubTitle = pageInfo.placeHolderSubTitle,
+                    placeholderIcon = pageInfo.placeholderIcon,
+                    modifier = Modifier.align(Alignment.Center)
                 )
             }
         }
@@ -77,12 +93,16 @@ fun ToolsPage(
 @Composable
 fun ToolsPagePreview() {
     JetKiteTheme {
-        val newTextLabel = stringResource(id = R.string.str_new_basket)
-        val textPlaceholder = stringResource(id = R.string.search_basket)
+        val pageInfo = ToolsPageInfo(
+            newOptionText = stringResource(id = R.string.str_new_basket),
+            searchPlaceHolder = stringResource(id = R.string.search_basket),
+            placeHolderTitle = stringResource(id = R.string.str_no_basket),
+            placeHolderSubTitle = stringResource(id = R.string.str_create_basket),
+            Icon.DrawableResourceIcon(JetKiteIcons.ToolsBasketPlaceholder)
+        )
         ToolsPage(
             currentTab = 0,
-            textNewBasketLabel = newTextLabel,
-            placeholderText = textPlaceholder,
+            pageInfo,
             onValueChange = {
             },
             onNewItemClick = {

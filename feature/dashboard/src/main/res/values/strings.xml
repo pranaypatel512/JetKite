@@ -53,6 +53,12 @@
     <string name="search_sip">Search SIP</string>
     <string name="search_alerts">Search alerts</string>
     <string name="str_new_basket">+ New basket</string>
+    <string name="str_no_basket">No baskets</string>
+    <string name="str_create_basket">Create a basket</string>
     <string name="new_sip">+ New SIP</string>
+    <string name="new_no_sip">No SIPs</string>
+    <string name="new_create_sip">Create new SIP</string>
     <string name="new_alert">+ New alert</string>
+    <string name="new_no_alert">No alerts</string>
+    <string name="new_create_alert">Create new alert</string>
 </resources>

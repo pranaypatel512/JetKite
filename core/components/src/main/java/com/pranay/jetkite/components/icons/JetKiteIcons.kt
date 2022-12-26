@@ -28,6 +28,9 @@ object JetKiteIcons {
     val Search = Icons.Default.Search
     val OrderPlaceholder = R.drawable.orders
     val PortfolioPlaceholder = R.drawable.portfolio
+    val ToolsBasketPlaceholder = R.drawable.image_tools_basket
+    val ToolsSIPPlaceholder = R.drawable.image_tools_sip
+    val ToolsAlertPlaceholder = R.drawable.image_tools_alerts
 }
 
 /**

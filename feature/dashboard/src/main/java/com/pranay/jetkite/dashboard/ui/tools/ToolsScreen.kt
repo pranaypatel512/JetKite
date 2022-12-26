@@ -19,6 +19,8 @@ import com.google.accompanist.pager.rememberPagerState
 import com.pranay.jetkite.components.JetKiteTab
 import com.pranay.jetkite.components.JetKiteTabRow
 import com.pranay.jetkite.components.extension.LightDarkPreviews
+import com.pranay.jetkite.components.icons.Icon
+import com.pranay.jetkite.components.icons.JetKiteIcons
 import com.pranay.jetkite.dashboard.R
 import com.pranay.jetkite.designsystem.JetKiteTheme
 import com.pranay.jetkite.designsystem.colorSearchBackground
@@ -32,11 +34,9 @@ import kotlinx.coroutines.launch
 fun ToolsScreen(
     modifier: Modifier = Modifier,
     viewModel: ToolsScreenViewModel = hiltViewModel(),
-    placeholderText: String? = null,
     coroutineScope: CoroutineScope = rememberCoroutineScope(),
     onNewOptionClick: (CreateNewCase) -> Unit = {},
     onNavigationBackClick: () -> Unit = {},
-    textNewBasketLabel: String = stringResource(id = R.string.str_new_basket),
     backgroundColor: Color = if (isSystemInDarkTheme()) colorSearchBackground else color_white,
     textColor: Color = if (isSystemInDarkTheme()) colorSearchTextDark else colorSearchTextLight
 ) {
@@ -58,34 +58,55 @@ fun ToolsScreen(
                 }
             }
             HorizontalPager(count = tabState.titles.size, state = pagerState) { tabIndex ->
-                val newTextLabel = when (tabIndex) {
-                    1 -> { stringResource(id = R.string.new_sip) }
-                    2 -> { stringResource(id = R.string.new_alert) }
-                    else -> { stringResource(id = R.string.str_new_basket) }
-                }
-                val textPlaceholder = when (tabIndex) {
-                    1 -> { stringResource(id = R.string.search_sip) }
-                    2 -> { stringResource(id = R.string.search_alerts) }
-                    else -> { stringResource(id = R.string.search_basket) }
+                val toolsPageInfo = when (tabIndex) {
+                    1 -> {
+                        ToolsPageInfo(
+                            newOptionText = stringResource(id = R.string.new_sip),
+                            searchPlaceHolder = stringResource(id = R.string.search_sip),
+                            placeHolderTitle = stringResource(id = R.string.new_no_sip),
+                            placeHolderSubTitle = stringResource(id = R.string.new_create_sip),
+                            Icon.DrawableResourceIcon(JetKiteIcons.ToolsSIPPlaceholder)
+                        )
+                    }
+                    2 -> {
+                        ToolsPageInfo(
+                            newOptionText = stringResource(id = R.string.new_alert),
+                            searchPlaceHolder = stringResource(id = R.string.search_alerts),
+                            placeHolderTitle = stringResource(id = R.string.new_no_alert),
+                            placeHolderSubTitle = stringResource(id = R.string.new_create_alert),
+                            Icon.DrawableResourceIcon(JetKiteIcons.ToolsAlertPlaceholder)
+                        )
+                    }
+                    else -> {
+                        ToolsPageInfo(
+                            newOptionText = stringResource(id = R.string.str_new_basket),
+                            searchPlaceHolder = stringResource(id = R.string.search_basket),
+                            placeHolderTitle = stringResource(id = R.string.str_no_basket),
+                            placeHolderSubTitle = stringResource(id = R.string.str_create_basket),
+                            Icon.DrawableResourceIcon(JetKiteIcons.ToolsBasketPlaceholder)
+                        )
+                    }
                 }
                 ToolsPage(
                     currentTab = tabIndex,
-                    textNewBasketLabel = newTextLabel,
-                    placeholderText = textPlaceholder,
+                    pageInfo = toolsPageInfo,
                     onValueChange = {
                     },
                     onNewItemClick = {
                         when (tabIndex) {
                             1 -> {
                                 // open screen for new SIP
+                                onNewOptionClick.invoke(CreateNewCase.CreateNewSIP)
                             }
 
                             2 -> {
                                 // Open screen for new Alert
+                                onNewOptionClick.invoke(CreateNewCase.CreateNewAlert)
                             }
 
                             else -> {
                                 // open screen for new basket
+                                onNewOptionClick.invoke(CreateNewCase.CreateNewBasket)
                             }
                         }
                     }
