@@ -12,7 +12,7 @@
       <img src="https://img.shields.io/badge/Kotlin-1.7.10-blue.svg?color=blue&style=for-the-badge"/>
     </a>
     <a href = "https://github.com/pranaypatel512/JetKite/stargazers">
-        <img src="https://img.shields.io/github/stars/mutualmobile/UberBookingClone?color=green&style=for-the-badge" />
+        <img src="https://img.shields.io/github/stars/pranaypatel512/JetKite?color=green&style=for-the-badge" />
     </a>
     <a href = "https://github.com/pranaypatel512/JetKite/network/members">
         <img src="https://img.shields.io/github/forks/mutualmobile/UberBookingClone?color=green&style=for-the-badge" />
